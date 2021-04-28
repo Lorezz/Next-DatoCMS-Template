@@ -1,0 +1,11 @@
+.next
+.vercel
+node_modules
+out
+package.json
+.eslintrc.json
+
+public
+assets
+temp
+
