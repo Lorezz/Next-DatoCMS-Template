@@ -5,6 +5,7 @@ import Footer from 'components/template/Footer';
 import Cta from 'components/template/Cta';
 import Post from 'components/template/Post';
 import Newsletter from 'components/template/Newsletter';
+import Gallery from 'components/template/Gallery';
 
 const page = () => {
   return (
@@ -17,6 +18,7 @@ const page = () => {
       <Header />
       <Container maxW={'7xl'}>
         <Post />
+        <Gallery />
         <Cta />
         <Newsletter />
       </Container>

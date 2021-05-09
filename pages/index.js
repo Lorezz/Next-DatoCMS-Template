@@ -16,6 +16,10 @@ import PostGrid from 'components/template/PostGrid';
 import ProductGrid from 'components/template/ProductGrid';
 import ProfileGrid from 'components/template/ProfileGrid';
 
+import Slideshow from 'components/template/Slideshow';
+import Gallery from 'components/template/Gallery';
+
+
 const page = () => {
   return (
     <Flex
@@ -26,7 +30,9 @@ const page = () => {
       justify="space-between">
       <Header />
       <Container maxW={'7xl'}>
+        <Slideshow />
         <Hero />
+        <Gallery />
         <FeatureLine />
         <FeaturedPost />
         <FeatureBlock />

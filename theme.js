@@ -2,8 +2,8 @@ import { extendTheme } from '@chakra-ui/react';
 
 const t = {
   fonts: {
-    body: 'Inter, system-ui, sans-serif',
-    heading: 'Work Sans, system-ui, sans-serif'
+    body: 'Relaway, system-ui, sans-serif',
+    heading: 'Work+Sans, system-ui, sans-serif'
   },
   colors: {
     discord: '#7289da'
@@ -46,9 +46,7 @@ const t = {
         // color: props.colorMode === 'dark' ? 'white' : 'gray.600',
         margin: 0,
         padding: 0,
-        boxSizing: 'border-box',
-        fontFamily:
-          '-apple-system, BlinkMacSystemFont, Avenir Next, Avenir, Helvetica, sans-serif'
+        boxSizing: 'border-box'
       },
       a: {
         color: props.colorMode === 'dark' ? 'orange.400' : 'orange.300',
