@@ -1,52 +1,195 @@
-import { Flex, Container } from '@chakra-ui/react';
+import React from 'react';
+import Link from 'next/link';
+import Head from 'next/head';
+import {
+  renderMetaTags,
+  Image,
+  StructuredText,
+  renderRule
+} from 'react-datocms';
+import { isBlockquote, isCode, isHeading } from 'datocms-structured-text-utils';
+import { render as toPlainText } from 'datocms-structured-text-to-plain-text';
 
-import Header from 'components/template/Header';
-import Footer from 'components/template/Footer';
-import Hero from 'components/template/Hero';
-import Stats from 'components/template/Stats';
-import FeatureLine from 'components/template/FeatureLine';
-import FeatureBlock from 'components/template/FeatureBlock';
-import Testimonials from 'components/template/Testimonials';
-import FeatureList from 'components/template/FeatureList';
-import Pricing from 'components/template/Pricing';
-import Newsletter from 'components/template/Newsletter';
+import { Heading } from '@chakra-ui/react';
 
-import FeaturedPost from 'components/template/FeaturedPost';
-import PostGrid from 'components/template/PostGrid';
-import ProductGrid from 'components/template/ProductGrid';
-import ProfileGrid from 'components/template/ProfileGrid';
+import Layout from 'components/Layout';
+import CodeHilight from 'components/CodeHilight';
+// import Header from 'components/Header';
+// import ProductsSlider from 'components/ProductsSlider';
 
-import Slideshow from 'components/template/Slideshow';
-import Gallery from 'components/template/Gallery';
+// import { getMenuPaths, filterMenu } from 'utils/utils';
+import { doQuery } from 'lib/api';
+import * as queries from 'lib/queries';
+import { log } from 'xstate/lib/actions';
 
+const BlogIndexPage = ({ data }) => {
+  const renderGallery = (record) => {
+    return (
+      <div>
+        {record.images.map((i) => (
+          <Image key={i.id} data={i.responsiveImage} />
+        ))}
+      </div>
+    );
+  };
 
-const page = () => {
+  const renderIntenalLink = (internalLink, title = null) => {
+    console.log('====================================');
+    console.log('internalLink', internalLink);
+    console.log('====================================');
+    let path = '';
+    let linkTitle = title;
+    switch (internalLink.__typename) {
+      case 'PostRecord':
+        path = '/blog';
+        linkTitle = linkTitle || internalLink.title;
+        break;
+      case 'TagRecord':
+        path = '/tags';
+        linkTitle = linkTitle || internalLink.name;
+        break;
+      case 'AuthorRecord':
+        path = '/authors';
+        linkTitle = linkTitle || internalLink.name;
+        break;
+      case 'PageRecord':
+        path = '';
+        linkTitle = linkTitle || internalLink.title;
+        break;
+      default:
+        break;
+    }
+
+    return (
+      <Link href={`${path}/${internalLink.slug}`}>
+        <a>{linkTitle ? linkTitle : internalLink.slug}</a>
+      </Link>
+    );
+  };
+
+  const renderLinkBlock = (block) => {
+    console.log('Link BLOCK', block);
+    const { title, externalLinkUrl, internalLink } = block;
+    if (externalLinkUrl) {
+      return (
+        <a href={externalLinkUrl} target="_blank">
+          {title}
+        </a>
+      );
+    } else if (internalLink) {
+      return renderIntenalLink(internalLink, title);
+    } else {
+      return <div>empty</div>;
+    }
+  };
+
+  const renderBlock = (record) => {
+    console.log('block', record.__typename);
+    switch (record.__typename) {
+      case 'GalleryRecord':
+        return <div>{renderGallery(record)}</div>;
+      case 'LinkRecord':
+        return <div>{renderLinkBlock(record)}</div>;
+      default:
+        return null;
+    }
+  };
+
   return (
-    <Flex
-      minHeight="100vh"
-      width="100vw"
-      direction="column"
-      overflow="hidden"
-      justify="space-between">
-      <Header />
-      <Container maxW={'7xl'}>
-        <Slideshow />
-        <Hero />
-        <Gallery />
-        <FeatureLine />
-        <FeaturedPost />
-        <FeatureBlock />
-        <PostGrid />
-        <ProductGrid />
-        <ProfileGrid />
-        <Testimonials />
-        <Stats />
-        <FeatureList />
-        <Pricing />
-        <Newsletter />
-      </Container>
-      <Footer />
-    </Flex>
+    <div>
+      {data?.home?.seo && (
+        <Head>
+          {renderMetaTags(data.home.seo)}
+          {/* {post._firstPublishedAt && (
+            <meta
+              property="article:published_time"
+              content={new Date(post._firstPublishedAt).toISOString()}
+            />
+          )} */}
+        </Head>
+      )}
+      <h1>{data.home.title}</h1>
+      <StructuredText
+        data={data.home.content}
+        renderInlineRecord={({ record }) => {
+          console.log('inline', record.__typename);
+          return renderIntenalLink(record);
+        }}
+        renderLinkToRecord={({ record, children, transformedMeta }) => {
+          console.log('link', record.__typename);
+          switch (record.__typename) {
+            case 'PostRecord':
+              return (
+                <a {...transformedMeta} href={`/blog/${record.slug}`}>
+                  {children}
+                </a>
+              );
+            case 'PageRecord':
+              return (
+                <a {...transformedMeta} href={`/${record.slug}`}>
+                  {children}
+                </a>
+              );
+            default:
+              return null;
+          }
+        }}
+        renderBlock={({ record }) => renderBlock(record)}
+        customRules={[
+          renderRule(isBlockquote, ({ node, children, key }) => {
+            return (
+              <div key={key}>
+                <div>{children}</div>
+                {node.attribution && <div>{node.attribution}</div>}
+              </div>
+            );
+          }),
+          renderRule(isCode, ({ node, key }) => {
+            return (
+              <CodeHilight
+                key={key}
+                code={node.code}
+                language={node.language || 'js'}
+                plugins={['line-numbers']}
+              />
+            );
+          }),
+          renderRule(isHeading, ({ node, children, key }) => {
+            return (
+              <Heading key={key} as={`h${node.level}`}>
+                {children}
+              </Heading>
+            );
+          })
+        ]}
+      />
+    </div>
   );
 };
-export default page;
+
+export async function getStaticProps({ params }) {
+  console.log('CURRENT PARAMS', params);
+
+  const response = await doQuery(queries.home, null);
+  const { data } = response;
+  // const paths = getMenuPaths(data);
+
+  // let v = { locale };
+  // let payload = { ...params };
+  // const r = await doQuery(queries.homeQuery, v);
+  // payload.data = r.data;
+
+  // const site = await doQuery(queries.siteQuery);
+  // const footer = await doQuery(queries.footerQuery, { locale });
+  // const navPages = filterMenu(paths, locale);
+
+  // return {
+  //   props: { site, footer, ...payload, paths, navPages, locale }
+  // };
+
+  return {
+    props: { data }
+  };
+}
+
+export default BlogIndexPage;
