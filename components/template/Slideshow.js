@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { wrap } from 'popmotion';
 import { Box, Flex } from '@chakra-ui/react';
+import { ArrowLeftIcon, ArrowRightIcon } from '@chakra-ui/icons';
+
 
 const images = [
   'https://d33wubrfki0l68.cloudfront.net/dd23708ebc4053551bb33e18b7174e73b6e1710b/dea24/static/images/wallpapers/shared-colors@2x.png',
@@ -50,9 +52,9 @@ const Slideshow = () => {
   return (
     <Flex
       width="100%"
-      height="50vh"
-      style={{ position: 'relative' }}
-
+      h="550px"
+      position="relative"
+      overflow="hidden"
       // justify-content: center;
       // align-items: center
     >
@@ -88,10 +90,11 @@ const Slideshow = () => {
         />
       </AnimatePresence>
       <Box
+        bg="gray.900"
+        color="white"
         style={{
           top: 'calc(50% - 20px)',
           position: 'absolute',
-          background: 'white',
           borderRadius: '30px',
           width: '40px',
           height: '40px',
@@ -100,21 +103,18 @@ const Slideshow = () => {
           alignItems: 'center',
           userSelect: 'none',
           cursor: 'pointer',
-          fontWeight: 'bold',
-          fontSize: '18px',
           zIndex: 2,
-
-          left: '10px',
-          transform: 'scale(-1)'
+          left: '10px'
         }}
         onClick={() => paginate(-1)}>
-        {'‣'}
+        <ArrowLeftIcon />
       </Box>
       <Box
+        bg="gray.900"
+        color="white"
         style={{
           top: 'calc(50% - 20px)',
           position: 'absolute',
-          background: 'white',
           borderRadius: '30px',
           width: '40px',
           height: '40px',
@@ -123,14 +123,11 @@ const Slideshow = () => {
           alignItems: 'center',
           userSelect: 'none',
           cursor: 'pointer',
-          fontWeight: 'bold',
-          fontSize: '18px',
           zIndex: 2,
-
           right: '10px'
         }}
         onClick={() => paginate(1)}>
-        {'‣'}
+        <ArrowRightIcon />
       </Box>
     </Flex>
   );

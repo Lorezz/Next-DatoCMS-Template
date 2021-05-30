@@ -41,10 +41,10 @@ export default function SplitWithImage() {
         <Stack spacing={4}>
           <Text
             textTransform={'uppercase'}
-            color={'blue.400'}
+            color={'white'}
             fontWeight={600}
             fontSize={'sm'}
-            bg={useColorModeValue('blue.50', 'blue.900')}
+            bg={'purple.600'}
             p={2}
             alignSelf={'flex-start'}
             rounded={'md'}>
@@ -64,14 +64,16 @@ export default function SplitWithImage() {
             }>
             <Feature
               icon={
-                <Icon as={IoAnalyticsSharp} color={'yellow.500'} w={5} h={5} />
+                <Icon as={IoAnalyticsSharp} color={'purple.500'} w={5} h={5} />
               }
-              iconBg={useColorModeValue('yellow.100', 'yellow.900')}
+              iconBg={useColorModeValue('purple.100', 'purple.900')}
               text={'Business Planning'}
             />
             <Feature
-              icon={<Icon as={IoLogoBitcoin} color={'green.500'} w={5} h={5} />}
-              iconBg={useColorModeValue('green.100', 'green.900')}
+              icon={
+                <Icon as={IoLogoBitcoin} color={'purple.500'} w={5} h={5} />
+              }
+              iconBg={useColorModeValue('purple.100', 'purple.900')}
               text={'Financial Planning'}
             />
             <Feature

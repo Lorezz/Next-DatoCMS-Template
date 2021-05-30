@@ -14,6 +14,7 @@ import { Heading } from '@chakra-ui/react';
 
 import Layout from 'components/Layout';
 import CodeHilight from 'components/CodeHilight';
+import Slideshow from 'components/Slideshow';
 // import Header from 'components/Header';
 // import ProductsSlider from 'components/ProductsSlider';
 
@@ -107,6 +108,9 @@ const BlogIndexPage = ({ data }) => {
             />
           )} */}
         </Head>
+      )}
+      {data.home.slideshow?.slides && (
+        <Slideshow slides={data.home.slideshow.slides} />
       )}
       <h1>{data.home.title}</h1>
       <StructuredText

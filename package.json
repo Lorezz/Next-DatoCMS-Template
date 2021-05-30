@@ -36,8 +36,10 @@
     "react-helmet": "^6.1.0",
     "react-hook-form": "^6.9.6",
     "react-icons": "^4.2.0",
+    "react-id-swiper": "^4.0.0",
     "react-leaflet": "^3.1.0",
     "react-lorem-ipsum": "^1.4.9",
+    "swiper": "^6.6.2",
     "xstate": "^4.17.0",
     "yup": "^0.32.9"
   },

@@ -81,7 +81,7 @@ export default function ThreeTierPricing() {
               </ListItem>
             </List>
             <Box w="80%" pt={7}>
-              <Button w="full" colorScheme="red" variant="outline">
+              <Button w="full" colorScheme="purple" variant="outline">
                 Start trial
               </Button>
             </Box>
@@ -97,7 +97,7 @@ export default function ThreeTierPricing() {
               style={{ transform: 'translate(-50%)' }}>
               <Text
                 textTransform="uppercase"
-                bg={useColorModeValue('red.300', 'red.700')}
+                bg={useColorModeValue('purple.300', 'purple.700')}
                 px={3}
                 py={1}
                 color={useColorModeValue('gray.900', 'gray.300')}
@@ -150,7 +150,7 @@ export default function ThreeTierPricing() {
                 </ListItem>
               </List>
               <Box w="80%" pt={7}>
-                <Button w="full" colorScheme="red">
+                <Button w="full" colorScheme="purple">
                   Start trial
                 </Button>
               </Box>
@@ -193,7 +193,7 @@ export default function ThreeTierPricing() {
               </ListItem>
             </List>
             <Box w="80%" pt={7}>
-              <Button w="full" colorScheme="red" variant="outline">
+              <Button w="full" colorScheme="purple" variant="outline">
                 Start trial
               </Button>
             </Box>

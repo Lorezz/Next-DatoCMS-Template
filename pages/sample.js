@@ -1,4 +1,4 @@
-import { Flex, Container } from '@chakra-ui/react';
+import { Flex, Container, Box } from '@chakra-ui/react';
 
 import Header from 'components/template/Header';
 import Footer from 'components/template/Footer';
@@ -19,34 +19,28 @@ import ProfileGrid from 'components/template/ProfileGrid';
 import Slideshow from 'components/template/Slideshow';
 import Gallery from 'components/template/Gallery';
 
+import Layout from 'components/template/Layout';
 
 const page = () => {
   return (
-    <Flex
-      minHeight="100vh"
-      width="100vw"
-      direction="column"
-      overflow="hidden"
-      justify="space-between">
-      <Header />
-      <Container maxW={'7xl'}>
+    <Layout>
+      <Box position="relative">
         <Slideshow />
-        <Hero />
-        <Gallery />
-        <FeatureLine />
-        <FeaturedPost />
-        <FeatureBlock />
-        <PostGrid />
-        <ProductGrid />
-        <ProfileGrid />
-        <Testimonials />
-        <Stats />
-        <FeatureList />
-        <Pricing />
-        <Newsletter />
-      </Container>
-      <Footer />
-    </Flex>
+      </Box>
+      <Hero />
+      <Gallery />
+      <FeatureLine />
+      <FeaturedPost />
+      <FeatureBlock />
+      <PostGrid />
+      <ProductGrid />
+      <ProfileGrid />
+      <Testimonials />
+      <Stats />
+      <FeatureList />
+      <Pricing />
+      <Newsletter />
+    </Layout>
   );
 };
 export default page;

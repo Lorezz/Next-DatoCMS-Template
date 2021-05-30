@@ -78,7 +78,11 @@ function ProductAddToCart() {
         <Box p="6">
           <Box d="flex" alignItems="baseline">
             {data.isNew && (
-              <Badge rounded="full" px="2" fontSize="0.8em" colorScheme="red">
+              <Badge
+                rounded="full"
+                px="2"
+                fontSize="0.8em"
+                colorScheme="purple">
                 New
               </Badge>
             )}
@@ -99,7 +103,13 @@ function ProductAddToCart() {
               color={'gray.800'}
               fontSize={'1.2em'}>
               <chakra.a href={'#'} display={'flex'}>
-                <Icon as={FiShoppingCart} h={7} w={7} alignSelf={'center'} />
+                <Icon
+                  as={FiShoppingCart}
+                  h={7}
+                  w={7}
+                  color="purple.500"
+                  alignSelf={'center'}
+                />
               </chakra.a>
             </Tooltip>
           </Flex>

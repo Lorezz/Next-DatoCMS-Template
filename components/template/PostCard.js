@@ -17,7 +17,7 @@ export default function blogPostWithImage() {
         w={'full'}
         bg={useColorModeValue('white', 'gray.900')}
         boxShadow={'2xl'}
-        rounded={'md'}
+        rounded={'lg'}
         p={6}
         overflow={'hidden'}>
         <Box
@@ -31,7 +31,7 @@ export default function blogPostWithImage() {
         </Box>
         <Stack>
           <Text
-            color={'green.500'}
+            color={'purple.500'}
             textTransform={'uppercase'}
             fontWeight={800}
             fontSize={'sm'}
