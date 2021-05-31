@@ -21,12 +21,14 @@ import {
   IconProps
 } from '@chakra-ui/react';
 
+import Layout from 'components/template/Layout';
+
 const BlogTags = (props) => {
   return (
     <HStack spacing={2} marginTop={props.marginTop}>
       {props.tags.map((tag) => {
         return (
-          <Tag size={'md'} variant="solid" colorScheme="orange" key={tag}>
+          <Tag size={'md'} variant="solid" colorScheme="purple" key={tag}>
             {tag}
           </Tag>
         );
@@ -53,14 +55,14 @@ export const BlogAuthor = (props) => {
 
 const ArticleList = () => {
   return (
-    <Container maxW={'7xl'} p="12">
+    <>
       <Stack spacing={{ base: 8, md: 10 }} py={{ base: 20, md: 28 }}>
         <Heading
           fontWeight={600}
           fontSize={{ base: '3xl', sm: '4xl', md: '6xl' }}
           lineHeight={'110%'}>
-          Meeting scheduling
-          <Text as={'span'} color={'orange.400'}>
+          <Text as={'span'}>Meeting scheduling</Text>
+          <Text as={'span'} color={'purple.500'} ml={2}>
             made easy
           </Text>
         </Heading>
@@ -75,7 +77,6 @@ const ArticleList = () => {
           </Text>
           <BlogTags tags={['Engineering', 'Product']} marginTop="3" />
         </Stack>
-        <Divider marginTop="5" />
         <Flex w={'full'}>
           <Image
             transform="scale(1.0)"
@@ -92,10 +93,9 @@ const ArticleList = () => {
           />
         </Flex>
       </Stack>
-      <Divider marginTop="5" />
-      <VStack paddingTop="40px" spacing="2" alignItems="flex-start">
+      <VStack spacing="2" alignItems="flex-start" mb={10}>
         <Heading as="h2">What we write about</Heading>
-        <Text as="p" fontSize="lg">
+        <Text as="p" fontSize="lg" py={5}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
           condimentum quam arcu, eu tempus tortor molestie at. Vestibulum
           pretium condimentum dignissim. Vestibulum ultrices vitae nisi sed
@@ -120,7 +120,7 @@ const ArticleList = () => {
           tortor, mattis nec lacus non, placerat congue elit.
         </Text>
       </VStack>
-    </Container>
+    </>
   );
 };
 

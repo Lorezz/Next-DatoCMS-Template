@@ -12,7 +12,7 @@ const Layout = ({ children }) => {
       overflow="hidden"
       justify="space-between">
       <Header />
-      <Container maxW={'7xl'}>{children}</Container>
+      {children}
       <Footer />
     </Flex>
   );

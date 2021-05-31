@@ -1,4 +1,4 @@
-import { Flex, Container } from '@chakra-ui/react';
+import { Container } from '@chakra-ui/react';
 
 import Cta from 'components/template/Cta';
 import Post from 'components/template/Post';
@@ -9,10 +9,12 @@ import Layout from 'components/template/Layout';
 const page = () => {
   return (
     <Layout>
-      <Post />
-      <Gallery />
-      <Cta />
-      <Newsletter />
+      <Container maxW={'7xl'} p="12">
+        <Post />
+        <Gallery />
+        <Cta />
+        <Newsletter />
+      </Container>
     </Layout>
   );
 };

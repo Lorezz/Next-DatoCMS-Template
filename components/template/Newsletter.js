@@ -15,13 +15,13 @@ export default function CardWithIllustration() {
     <Flex
       align={'center'}
       justify={'center'}
-      py={12}
+      py={10}
       bg={useColorModeValue('gray.50', 'gray.800')}>
       <Stack
         boxShadow={'2xl'}
         bg={useColorModeValue('white', 'gray.700')}
         rounded={'xl'}
-        p={10}
+        p={12}
         spacing={8}
         align={'center'}>
         <Icon as={NotificationIcon} w={24} h={24} />
@@ -50,12 +50,12 @@ export default function CardWithIllustration() {
             }}
           />
           <Button
-            bg={'blue.400'}
+            bg={'purple.400'}
             rounded={'full'}
             color={'white'}
             flex={'1 0 auto'}
-            _hover={{ bg: 'blue.500' }}
-            _focus={{ bg: 'blue.500' }}>
+            _hover={{ bg: 'purple.500' }}
+            _focus={{ bg: 'purple.500' }}>
             Subscribe
           </Button>
         </Stack>

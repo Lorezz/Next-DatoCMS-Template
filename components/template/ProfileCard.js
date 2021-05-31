@@ -86,6 +86,7 @@ export default function SocialProfileSimple() {
         <Stack mt={8} direction={'row'} spacing={4}>
           <Button
             flex={1}
+            boxShadow="lg"
             fontSize={'sm'}
             rounded={'full'}
             _focus={{
@@ -99,9 +100,7 @@ export default function SocialProfileSimple() {
             rounded={'full'}
             bg={'purple.400'}
             color={'white'}
-            boxShadow={
-              '0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)'
-            }
+            boxShadow="lg"
             _hover={{
               bg: 'purple.500'
             }}

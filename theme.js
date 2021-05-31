@@ -49,10 +49,11 @@ const t = {
         boxSizing: 'border-box'
       },
       a: {
-        color: props.colorMode === 'dark' ? 'orange.400' : 'orange.300',
+        color: props.colorMode === 'dark' ? 'purple.400' : 'purple.300',
         textDecoration: 'none',
-        fontSize: '14px'
-      }
+        fontSize: 'xl'
+      },
+      p: { fontSize: 'xl' }
     })
   },
   initialColorMode: 'dark',

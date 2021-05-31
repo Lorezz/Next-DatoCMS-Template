@@ -27,19 +27,21 @@ const page = () => {
       <Box position="relative">
         <Slideshow />
       </Box>
-      <Hero />
-      <Gallery />
-      <FeatureLine />
-      <FeaturedPost />
-      <FeatureBlock />
-      <PostGrid />
-      <ProductGrid />
-      <ProfileGrid />
-      <Testimonials />
-      <Stats />
-      <FeatureList />
-      <Pricing />
-      <Newsletter />
+      <Container maxW={'7xl'}>
+        <Hero />
+        <Gallery />
+        <FeatureLine />
+        <FeaturedPost />
+        <FeatureBlock />
+        <PostGrid />
+        <ProductGrid />
+        <ProfileGrid />
+        <Testimonials />
+        <Stats />
+        <FeatureList />
+        <Pricing />
+        <Newsletter />
+      </Container>
     </Layout>
   );
 };

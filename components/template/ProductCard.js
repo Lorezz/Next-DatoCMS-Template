@@ -65,7 +65,7 @@ function ProductAddToCart() {
             position="absolute"
             top={2}
             right={2}
-            bg="red.200"
+            bg="purple.200"
           />
         )}
 
