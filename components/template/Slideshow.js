@@ -4,7 +4,6 @@ import { wrap } from 'popmotion';
 import { Box, Flex } from '@chakra-ui/react';
 import { ArrowLeftIcon, ArrowRightIcon } from '@chakra-ui/icons';
 
-
 const images = [
   'https://d33wubrfki0l68.cloudfront.net/dd23708ebc4053551bb33e18b7174e73b6e1710b/dea24/static/images/wallpapers/shared-colors@2x.png',
   'https://d33wubrfki0l68.cloudfront.net/49de349d12db851952c5556f3c637ca772745316/cfc56/static/images/wallpapers/bridge-02@2x.png',
@@ -51,18 +50,18 @@ const Slideshow = () => {
 
   return (
     <Flex
-      width="100%"
-      h="550px"
+      width="full"
+      h={{ base: '20vh', sm: '30vh', md: '40vh', lg: '50vh', xl: '60vh' }}
       position="relative"
       overflow="hidden"
-      // justify-content: center;
-      // align-items: center
-    >
+      justify-content="center"
+      align-items="center">
       <AnimatePresence initial={false} custom={direction}>
         <motion.img
           style={{
             position: 'absolute',
-            maxWidth: '100%'
+            maxWidth: '100%',
+            width: '100%'
           }}
           key={page}
           src={images[imageIndex]}
