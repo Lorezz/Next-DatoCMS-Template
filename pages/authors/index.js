@@ -7,16 +7,16 @@ import {
   SimpleGrid,
   Avatar
 } from '@chakra-ui/react';
-import { Image, StructuredText } from 'react-datocms';
+import { Image } from 'react-datocms';
 
 import Layout from 'components/template/Layout';
 import { doQuery } from 'lib/api';
 import * as queries from 'lib/queries';
 
-const BlogIndexPage = ({ posts }) => {
+const AuthorsIndexPage = ({ authors }) => {
   return (
     <Layout>
-      <Container maxW={'container.xl'} px={4} py={5} justify="flex-start">
+      <Container maxW={'container.xl'} px={4} py={5}>
         <Heading as="h1" fontSize="6xl" py={10}>
           {'BLOG INDEX'}
         </Heading>
@@ -25,18 +25,17 @@ const BlogIndexPage = ({ posts }) => {
           spacing="8"
           p="10"
           rounded="lg">
-          {posts?.map((post) => {
+          {authors?.map((author) => {
             return (
-              <Box key={post.id}>
-                <Link href={`/blog/${post.slug}`}>
+              <Box key={author.id}>
+                <Link href={`/authors/${author.slug}`}>
                   <a>
-                    {post.pic && (
-                      <Avatar title={post.title} src={post.pic.url} />
+                    {author.pic.url && (
+                      <Avatar name={author.name} src={author.pic.url} />
                     )}
-                    <Text>{post.title}</Text>
+                    <Text>{author.name}</Text>
                   </a>
                 </Link>
-                <StructuredText data={post.excerpt} />
               </Box>
             );
           })}
@@ -47,11 +46,11 @@ const BlogIndexPage = ({ posts }) => {
 };
 
 export async function getStaticProps() {
-  const response = await doQuery(queries.postList, null);
-  const posts = response?.data?.posts || [];
+  const response = await doQuery(queries.authors, null);
+  const authors = response?.data?.authors || [];
   return {
-    props: { posts }
+    props: { authors }
   };
 }
 
-export default BlogIndexPage;
+export default AuthorsIndexPage;

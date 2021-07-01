@@ -49,7 +49,7 @@ const NavBar = () => {
             <Box
               as="img"
               loading="lazy"
-              title="NextFlag"
+              title="Lorezz Next Blog "
               src={
                 colorMode === 'light'
                   ? '/images/logo-inverted.png'

@@ -1,20 +1,8 @@
-import { useEffect, useState, useCallback, useRef } from 'react';
+import { useState, useRef } from 'react';
 import Swiper from 'react-id-swiper';
 import SwiperCore, { Autoplay } from 'swiper';
 import 'swiper/swiper.min.css';
-import { motion } from 'framer-motion';
-import {
-  Box,
-  Heading,
-  Link,
-  Text,
-  HStack,
-  Tag,
-  Wrap,
-  WrapItem,
-  Container,
-  VStack
-} from '@chakra-ui/react';
+import { Box, Text } from '@chakra-ui/react';
 import { Image } from 'react-datocms';
 import { ArrowLeftIcon, ArrowRightIcon } from '@chakra-ui/icons';
 
@@ -53,14 +41,13 @@ const SwiperCarousel = ({ slides = fake }) => {
               backgroundSize="cover"
               backgroundPosition="center center"
               display="flex"
-              w="100%"
+              w="full"
               h={{ base: '95vh', md: '90vh' }}
               position="relative"
               alignItems="center">
               <Box
                 bgGradient="linear(to-r, rgba(0,0,0,0.3), rgba(0,0,0,0.1))"
                 display="flex"
-                w="100%"
                 h={{ base: '95vh', md: '90vh' }}
                 flex="1"
                 alignItems={{ base: 'flex-start', md: 'center' }}
