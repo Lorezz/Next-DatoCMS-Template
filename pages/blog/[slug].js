@@ -1,24 +1,36 @@
 import * as queries from 'lib/queries';
 import { doQuery } from 'lib/api';
 import { Box, Heading, Container } from '@chakra-ui/react';
-import { Image, StructuredText } from 'react-datocms';
+import { Image } from 'react-datocms';
 
 import Layout from 'components/template/Layout';
 import StructuredContent from 'components/StructuredContent';
+import BreadCrumbs from 'components/BreadCrumbs';
 
 function Post({ post }) {
+  const breadcrumbs = [
+    { title: 'Home', path: '/' },
+    { title: 'Blog', path: '/blog' },
+    { title: post.title, path: `/blog/${post.slug}`, isCurrentPage: true }
+  ];
   return (
     <Layout>
-      <Container maxW={'container.xl'} px={4} py={5}>
-        {post?.pic && (
+      {post?.pic && (
+        <Container
+          maxW={{ base: '100vw', md: '95vw', lg: '90vw', xl: '80vw' }}
+          px={4}
+          py={5}>
           <Box>
             <Image data={post.pic.responsiveImage} width={600} />
           </Box>
-        )}
+        </Container>
+      )}
+      <Container maxW={'container.xl'} px={4} py={5}>
+        <BreadCrumbs paths={breadcrumbs} />
         <Heading as="h1" fontSize="6xl" py={10}>
           {post?.title}
         </Heading>
-        {post.excerpt && <StructuredText data={post.excerpt} />}
+        {post.excerpt && <StructuredContent content={post.excerpt} />}
         {post.content && <StructuredContent content={post.content} />}
       </Container>
     </Layout>

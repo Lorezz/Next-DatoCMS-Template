@@ -32,7 +32,7 @@ const t = {
         pointerEvents: 'none'
       },
       '#nprogress .bar': {
-        background: 'green.200',
+        background: props.colorMode === 'dark' ? 'green.200' : 'purple.400',
         position: 'fixed',
         zIndex: '1031',
         top: 0,
@@ -49,7 +49,7 @@ const t = {
         boxSizing: 'border-box'
       },
       a: {
-        color: props.colorMode === 'dark' ? 'purple.400' : 'purple.300',
+        color: props.colorMode === 'dark' ? 'green.200' : 'purple.400',
         textDecoration: 'none',
         fontSize: 'xl'
       },

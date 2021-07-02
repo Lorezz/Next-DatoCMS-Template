@@ -31,7 +31,7 @@ const BlogIndexPage = ({ data }) => {
 
 export async function getStaticProps({ params }) {
   // console.log('CURRENT PARAMS', params);
-
+  console.log(queries.home);
   const response = await doQuery(queries.home, null);
   const { data } = response;
   // const paths = getMenuPaths(data);

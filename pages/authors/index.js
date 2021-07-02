@@ -7,7 +7,7 @@ import {
   SimpleGrid,
   Avatar
 } from '@chakra-ui/react';
-import { Image } from 'react-datocms';
+// import { Image } from 'react-datocms';
 
 import Layout from 'components/template/Layout';
 import { doQuery } from 'lib/api';
