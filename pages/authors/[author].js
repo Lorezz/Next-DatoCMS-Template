@@ -24,10 +24,7 @@ function Post({ author }) {
 
 export async function getStaticPaths() {
   const response = await doQuery(queries.authors, null);
-  const data = response.data.allAuthors;
-  console.log('DATA', data);
-
-  const paths = data.map((item) => ({
+  const paths = response?.data?.authors?.map((item) => ({
     params: { author: item.slug }
   }));
 

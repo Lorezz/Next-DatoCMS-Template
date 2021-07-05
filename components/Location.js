@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Box, Text, Image, Button } from '@chakra-ui/react';
-import Map from './Map';
+import Map from './MapMapbox';
 
 function Location({ location, detail = false }) {
   if (!location) return null;

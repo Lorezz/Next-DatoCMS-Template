@@ -1,57 +1,33 @@
-import ReactDOM from 'react-dom';
-import React, { useState, useRef, useEffect } from 'react';
-import mapboxgl from 'mapbox-gl';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
+import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css';
+import 'leaflet-defaulticon-compatibility';
 
 const { NEXT_PUBLIC_REACT_APP_API_MAPBOX } = process.env;
+const layerUrl = `https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/256/{z}/{x}/{y}@2x`;
+const attributionText = `Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery &copy; <a href="https://www.mapbox.com/">Mapbox</a>;`;
 
-const Map = ({ mapHeight, position }) => {
-  var map;
-  mapboxgl.accessToken = NEXT_PUBLIC_REACT_APP_API_MAPBOX;
-  const mapRef = useRef(null);
-
-  const initialValues = position ? position : { lng: 0.0, lat: 0.0, zoom: 1 };
-  const [opts, setOpts] = useState(initialValues);
-
-  useEffect(() => {
-    try {
-      map = new mapboxgl.Map({
-        container: mapRef.current,
-        style: 'mapbox://styles/mapbox/outdoors-v11',
-        center: [opts.lng, opts.lat],
-        zoom: opts.zoom
-      });
-      map.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
-
-      new mapboxgl.Marker().setLngLat([opts.lng, opts.lat]).addTo(map);
-
-      return () => map.remove();
-    } catch (error) {
-      console.error(error);
-    }
-  }, []);
-
+const Map = ({ position, name }) => {
   return (
-    <div>
-      <div
-        style={{
-          position: 'relative',
-          width: '100%',
-          height: mapHeight ? mapHeight : 300,
-          border: '1px solid #eee',
-          backgroundColor: '#eee',
-          borderRadius: '10px'
-        }}>
-        <div
-          ref={mapRef}
-          style={{
-            position: 'absolute',
-            top: 0,
-            right: 0,
-            left: 0,
-            bottom: 0
-          }}></div>
-      </div>
-    </div>
+    <MapContainer
+      center={position}
+      zoom={14}
+      scrollWheelZoom={false}
+      style={{ height: '100%', width: '100%' }}>
+      <TileLayer
+        url={`${layerUrl}?access_token=${NEXT_PUBLIC_REACT_APP_API_MAPBOX}`}
+        attribution={attributionText}
+      />
+      <Marker position={position} draggable={false} animate={true}>
+        <Popup>{name}</Popup>
+      </Marker>
+    </MapContainer>
   );
 };
+
 export default Map;
+
+//USAGE with dynamic import
+/*
+  const MapWithNoSSR = dynamic(() => import("../component/map"), {ssr: false});
+*/

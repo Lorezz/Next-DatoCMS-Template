@@ -1,19 +1,22 @@
-import Head from 'next/head';
-import { Flex } from '@chakra-ui/react';
-import NavBar from './NavBar';
+import { Flex, Box } from '@chakra-ui/react';
+import Header from './Header';
+import Footer from './Footer';
+import SEO from './SEO';
 
-const Layout = ({ children }) => {
+const Layout = ({ data, children }) => {
+  const { menu, footer, site } = data;
   return (
     <>
-      <Head>
-        <link
-          href="https://api.tiles.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.css"
-          rel="stylesheet"
-        />
-      </Head>
-      <Flex height="100vh" width="100vw" direction="column" overflow="hidden">
-        <NavBar />
-        {children}
+      {/* <SEO seo={site?.globalSeo} /> */}
+      <Flex
+        minHeight="100vh"
+        width="100vw"
+        direction="column"
+        // overflow="hidden"
+        justify="space-between">
+        <Header data={menu} />
+        <Box>{children}</Box>
+        <Footer data={footer} />
       </Flex>
     </>
   );

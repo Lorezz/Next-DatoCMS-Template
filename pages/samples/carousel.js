@@ -1,11 +1,7 @@
 import React from 'react';
-import Link from 'next/link';
-import Head from 'next/head';
-
-import { Heading } from '@chakra-ui/react';
 import Slideshow from 'components/Slideshow';
 
-const Prova = ({ data }) => {
+const Carousel = ({ data }) => {
   const slides = [
     {
       title: 'Drone Footage, Golden Gate',
@@ -132,4 +128,4 @@ const Prova = ({ data }) => {
   );
 };
 
-export default Prova;
+export default Carousel;
