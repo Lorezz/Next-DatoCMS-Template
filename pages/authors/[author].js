@@ -3,12 +3,23 @@ import { doQuery } from 'lib/api';
 import { Box, Text, Container, VStack } from '@chakra-ui/react';
 import { Image } from 'react-datocms';
 
-import Layout from 'components/template/Layout';
+import Layout from 'components/Layout';
+import BreadCrumbs from 'components/BreadCrumbs';
 
-function Post({ author }) {
+function Author({ author, layout }) {
+  const breadcrumbs = [
+    { title: 'Home', path: '/' },
+    { title: 'Authors', path: '/authors' },
+    {
+      title: author.name,
+      path: `/authors/${author.slug}`,
+      isCurrentPage: true
+    }
+  ];
   return (
-    <Layout>
+    <Layout data={layout}>
       <Container maxW={'container.xl'} px={4} py={5}>
+        <BreadCrumbs paths={breadcrumbs} />
         <VStack>
           {author?.pic && (
             <Box width={300}>
@@ -32,13 +43,13 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const { author } = params;
-  console.log('author', author);
-  const response = await doQuery(queries.author, { slug: author });
-  console.log('RESPONSE', response);
+  const response = await doQuery(queries.author, { slug: params.author });
+  const author = response?.data?.author || null;
 
-  // Pass post data to the page via props
-  return { props: { author: response?.data?.author } };
+  const site = await doQuery(queries.siteQuery, null);
+  const layout = site.data;
+
+  return { props: { author, layout } };
 }
 
-export default Post;
+export default Author;

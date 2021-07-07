@@ -3,18 +3,19 @@ import { doQuery } from 'lib/api';
 import { Box, Heading, Container } from '@chakra-ui/react';
 import { Image } from 'react-datocms';
 
-import Layout from 'components/template/Layout';
+import Layout from 'components/Layout';
 import StructuredContent from 'components/StructuredContent';
 import BreadCrumbs from 'components/BreadCrumbs';
 
-function Post({ post }) {
+function Post({ post, layout }) {
   const breadcrumbs = [
     { title: 'Home', path: '/' },
     { title: 'Blog', path: '/blog' },
     { title: post.title, path: `/blog/${post.slug}`, isCurrentPage: true }
   ];
   return (
-    <Layout>
+    <Layout data={layout}>
+      {post?.seo && <SEO tags={post.seo} />}
       {post?.pic && (
         <Container
           maxW={{ base: '100vw', md: '95vw', lg: '90vw', xl: '80vw' }}
@@ -51,12 +52,15 @@ export async function getStaticProps({ params }) {
   const { slug } = params;
   console.log('slug', slug);
   const response = await doQuery(queries.post, { slug });
-  console.log('RESPONSE', response);
+  // console.log('RESPONSE', response);
   const { data } = response;
   const { post } = data;
 
+  const site = await doQuery(queries.siteQuery, null);
+  const layout = site.data;
+
   // Pass post data to the page via props
-  return { props: { post } };
+  return { props: { post, layout } };
 }
 
 export default Post;

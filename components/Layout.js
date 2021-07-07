@@ -5,9 +5,14 @@ import SEO from './SEO';
 
 const Layout = ({ data, children }) => {
   const { menu, footer, site } = data;
+
+  let globalSeo = site?.globalSeo || [];
+  let favicon = site?.favicon || [];
+  let seo = [...favicon, ...globalSeo];
+
   return (
     <>
-      {/* <SEO seo={site?.globalSeo} /> */}
+      {seo && seo.length > 0 && <SEO tags={seo} />}
       <Flex
         minHeight="100vh"
         width="100vw"

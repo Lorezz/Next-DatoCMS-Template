@@ -1,4 +1,7 @@
+import { useState } from 'react';
 import NextLink from 'next/link';
+import { useRouter } from 'next/router';
+
 import {
   Box,
   Flex,
@@ -26,6 +29,7 @@ import {
 } from '@chakra-ui/icons';
 
 import ColorMode from 'components/ColorMode';
+import { resolvePage } from 'lib/utils';
 
 const NavAction = ({ action }) => {
   const url = action.externalLinkUrl
@@ -54,79 +58,92 @@ const hasChilds = (navItem) => {
 };
 
 const DesktopNav = ({ nav }) => {
+  const router = useRouter();
+  const pushRoute = (path) => {
+    if (path) return router.push(path);
+  };
   return (
-    <Stack direction={'row'} spacing={4}>
-      {nav.map((navItem) => (
-        <Box key={navItem.id}>
-          <Popover trigger={'hover'} placement={'bottom-start'}>
-            <PopoverTrigger>
-              <Link
-                p={2}
-                href={navItem.href ?? '#'}
-                fontSize={'sm'}
-                fontWeight={500}
-                color={useColorModeValue('gray.600', 'gray.200')}
-                _hover={{
-                  textDecoration: 'none',
-                  color: useColorModeValue('gray.800', 'white')
-                }}>
-                {navItem.label}
-              </Link>
-            </PopoverTrigger>
+    <Stack direction={'row'} spacing={4} align={'center'}>
+      {nav.map((navItem) => {
+        return (
+          <Box key={navItem.id}>
+            <Popover trigger={'hover'} placement={'bottom-start'}>
+              <PopoverTrigger>
+                <Box outline="none">
+                  <NextLink
+                    href={navItem.href ? resolvePage(navItem.href) : '#'}
+                    passHref>
+                    <Link
+                      mt={10}
+                      p={2}
+                      fontSize={'sm'}
+                      fontWeight={500}
+                      color={useColorModeValue('gray.600', 'gray.200')}
+                      _hover={{
+                        textDecoration: 'none',
+                        color: useColorModeValue('gray.800', 'white')
+                      }}>
+                      {navItem.label}
+                    </Link>
+                  </NextLink>
+                </Box>
+              </PopoverTrigger>
 
-            {hasChilds(navItem) && (
-              <PopoverContent
-                border={0}
-                boxShadow={'xl'}
-                bg={useColorModeValue('white', 'gray.800')}
-                p={4}
-                rounded={'xl'}
-                minW={'sm'}>
-                <Stack>
-                  {navItem.children.map((child) => (
-                    <DesktopSubNav key={child.label} {...child} />
-                  ))}
-                </Stack>
-              </PopoverContent>
-            )}
-          </Popover>
-        </Box>
-      ))}
+              {hasChilds(navItem) && (
+                <PopoverContent
+                  border={0}
+                  boxShadow={'xl'}
+                  bg={useColorModeValue('white', 'gray.800')}
+                  p={4}
+                  rounded={'xl'}
+                  minW={'sm'}>
+                  <Stack>
+                    {navItem.children.map((child) => (
+                      <DesktopSubNav key={child.label} {...child} />
+                    ))}
+                  </Stack>
+                </PopoverContent>
+              )}
+            </Popover>
+          </Box>
+        );
+      })}
     </Stack>
   );
 };
 
-const DesktopSubNav = ({ label, href, subLabel = '' }) => {
+const DesktopSubNav = ({ label, href = '#', subLabel = '' }) => {
   return (
-    <Link
-      href={href}
-      role={'group'}
-      display={'block'}
-      p={2}
-      rounded={'md'}
-      _hover={{ bg: useColorModeValue('pink.50', 'gray.900') }}>
-      <Stack direction={'row'} align={'center'}>
-        <Box>
-          <Text
+    <NextLink href={resolvePage(href)} passHref>
+      <Link
+        role={'group'}
+        display={'block'}
+        p={2}
+        rounded={'md'}
+        _hover={{ bg: useColorModeValue('pink.50', 'gray.900') }}>
+        <Stack direction={'row'} align={'center'}>
+          <Box>
+            <Text
+              transition={'all .3s ease'}
+              _groupHover={{ color: 'pink.400' }}
+              fontWeight={500}>
+              {label}
+            </Text>
+            <Text fontSize={'sm'}>{subLabel}</Text>
+          </Box>
+          <Flex
             transition={'all .3s ease'}
-            _groupHover={{ color: 'pink.400' }}
-            fontWeight={500}>
-            {label}
-          </Text>
-          <Text fontSize={'sm'}>{subLabel}</Text>
-        </Box>
-        <Flex
-          transition={'all .3s ease'}
-          transform={'translateX(-10px)'}
-          opacity={0}
-          _groupHover={{ opacity: '100%', transform: 'translateX(0)' }}
-          justify={'flex-end'}
-          align={'center'}
-          flex={1}>
-          <Icon color={'pink.400'} w={5} h={5} as={ChevronRightIcon} />
-        </Flex>
-      </Stack>
-    </Link>
+            transform={'translateX(-10px)'}
+            opacity={0}
+            _groupHover={{ opacity: '100%', transform: 'translateX(0)' }}
+            justify={'flex-end'}
+            align={'center'}
+            flex={1}>
+            <Icon color={'pink.400'} w={5} h={5} as={ChevronRightIcon} />
+          </Flex>
+        </Stack>
+      </Link>
+    </NextLink>
   );
 };
 
@@ -146,12 +163,18 @@ const MobileNav = ({ nav }) => {
 const MobileNavItem = ({ label, children, href }) => {
   const { isOpen, onToggle } = useDisclosure();
   const childs = hasChilds({ children });
+  const handleClick = (hasChildren) => {
+    if (hasChildren) {
+      onToggle();
+    }
+    return;
+  };
   return (
-    <Stack spacing={4} onClick={childs && onToggle}>
+    <Stack spacing={4} onClick={(e) => handleClick(childs)}>
       <Flex
         py={2}
         as={Link}
-        href={href ?? '#'}
+        href={resolvePage(href)}
         justify={'space-between'}
         align={'center'}
         _hover={{

@@ -12,7 +12,7 @@ import { doQuery } from 'lib/api';
 const BlogIndexPage = ({ data, layout }) => {
   return (
     <Layout data={layout}>
-      {data?.home?.seo && <SEO seo={data.home.seo} />}
+      {data?.home?.seo && <SEO tags={data.home.seo} />}
       {data.home.slideshow?.slides && (
         <Slideshow slides={data.home.slideshow.slides} />
       )}

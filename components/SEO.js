@@ -1,15 +1,15 @@
 import Head from 'next/head';
 import { renderMetaTags } from 'react-datocms';
 
-const SEO = ({ seo }) => {
+const SEO = ({ tags, firstPublishedAt = null }) => {
   <Head>
-    {renderMetaTags(seo)}
-    {/* {post._firstPublishedAt && (
-            <meta
-              property="article:published_time"
-              content={new Date(post._firstPublishedAt).toISOString()}
-            />
-          )} */}
+    {renderMetaTags(tags)}
+    {firstPublishedAtt && (
+      <meta
+        property="article:published_time"
+        content={new Date(firstPublishedAt).toISOString()}
+      />
+    )}
   </Head>;
 };
 

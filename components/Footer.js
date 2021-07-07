@@ -1,7 +1,7 @@
+import Link from 'next/link';
 import {
   Box,
   Container,
-  Link,
   SimpleGrid,
   Stack,
   Text,
@@ -66,11 +66,11 @@ const SocialIcon = ({ name }) => {
 const Column = ({ column }) => {
   const { id, title, pages } = column;
   return (
-    <Stack align={'flex-start'} key={id ? id : title}>
+    <Stack align={'flex-start'}>
       <ListHeader>{title}</ListHeader>
       {pages?.filter(Boolean).map((page) => {
         return (
-          <Link key={`fp_${page.id}`} href={page.slug ?? '/'}>
+          <Link key={page.id || 'home'} href={page.slug ?? '/'}>
             <a>{page.title}</a>
           </Link>
         );
@@ -109,7 +109,6 @@ const Newsletter = () => {
 
 const Footer = ({ data }) => {
   const { copy, showNewsletterForm, socials, columns } = data;
-  console.log('SOCIALS', socials);
   return (
     <Box
       bg={useColorModeValue('gray.50', 'gray.900')}
@@ -128,7 +127,7 @@ const Footer = ({ data }) => {
             </Text>
           </Flex>
           {columns.filter(Boolean).map((c) => (
-            <Column column={c} />
+            <Column column={c} key={c.id ? c.id : c.title} />
           ))}
           <Stack>
             {showNewsletterForm && <Newsletter />}

@@ -33,7 +33,7 @@ export const NotFound = () => {
           </Text>
         </Stack>
         <Flex>
-          <NextLink href={'/sample'} passHref>
+          <NextLink href={'/'} passHref>
             <Button
               as={'a'}
               colorScheme={'green'}
