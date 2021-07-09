@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "postbuild": "next-sitemap"
   },
   "dependencies": {
     "@chakra-ui/icons": "^1.0.12",
@@ -44,6 +45,7 @@
     "yup": "^0.32.9"
   },
   "devDependencies": {
-    "@netlify/plugin-nextjs": "^3.0.3"
+    "@netlify/plugin-nextjs": "^3.0.3",
+    "next-sitemap": "^1.6.133"
   }
 }
