@@ -47,7 +47,9 @@ export async function getStaticProps({ params }) {
   const author = response?.data?.author || null;
 
   const site = await doQuery(queries.siteQuery, null);
-  const layout = site.data;
+  const favicon = site?.data?.site?.favicon || [];
+  const metatags = [...favicon, ...author.seo];
+  const layout = { ...site.data, metatags };
 
   return { props: { author, layout } };
 }

@@ -42,7 +42,7 @@
     "react-lorem-ipsum": "^1.4.9",
     "react-player": "^2.9.0",
     "react-use-dimensions": "^1.2.1",
-    "swiper": "^6.6.2",
+    "swiper": "^6.7.5",
     "xstate": "^4.17.0",
     "yup": "^0.32.9"
   },

@@ -15,7 +15,6 @@ function Post({ post, layout }) {
   ];
   return (
     <Layout data={layout}>
-      {post?.seo && <SEO tags={post.seo} />}
       {post?.pic && (
         <Container
           maxW={{ base: '100vw', md: '95vw', lg: '90vw', xl: '80vw' }}
@@ -50,16 +49,14 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const { slug } = params;
-  console.log('slug', slug);
   const response = await doQuery(queries.post, { slug });
-  // console.log('RESPONSE', response);
-  const { data } = response;
-  const { post } = data;
+  const post = response?.data?.post;
 
   const site = await doQuery(queries.siteQuery, null);
-  const layout = site.data;
+  const favicon = site?.data?.site?.favicon || [];
+  const metatags = [...favicon, ...post.seo];
+  const layout = { ...site.data, metatags };
 
-  // Pass post data to the page via props
   return { props: { post, layout } };
 }
 

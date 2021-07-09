@@ -24,7 +24,6 @@ const BlogIndexPage = ({ posts, page, layout }) => {
   return (
     <Layout data={layout}>
       {page?.slideshow?.slides && <Slideshow slides={page.slideshow.slides} />}
-      {page?.seo && <SEO tags={page.seo} />}
       {page?.pic && <HeroImage pic={page.pic} small={true} />}
       <Container maxW={'container.xl'} px={4} py={5} justify="flex-start">
         <BreadCrumbs paths={breadcrumbs} />
@@ -69,7 +68,9 @@ export async function getStaticProps() {
   const page = pageResponse?.data?.page || null;
 
   const site = await doQuery(queries.siteQuery, null);
-  const layout = site.data;
+  const favicon = site?.data?.site?.favicon || [];
+  const metatags = [...favicon, ...page.seo];
+  const layout = { ...site.data, metatags };
 
   return {
     props: { posts, page, layout }

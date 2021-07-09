@@ -1,7 +1,6 @@
 import React from 'react';
 import { Heading, Container } from '@chakra-ui/react';
 
-import SEO from 'components/SEO';
 import Layout from 'components/Layout';
 import Slideshow from 'components/Slideshow';
 import StructuredContent from 'components/StructuredContent';
@@ -9,35 +8,31 @@ import StructuredContent from 'components/StructuredContent';
 import * as queries from 'lib/queries';
 import { doQuery } from 'lib/api';
 
-const BlogIndexPage = ({ data, layout }) => {
+const BlogIndexPage = ({ page, layout }) => {
   return (
     <Layout data={layout}>
-      {data?.home?.seo && <SEO tags={data.home.seo} />}
-      {data.home.slideshow?.slides && (
-        <Slideshow slides={data.home.slideshow.slides} />
-      )}
+      {page.slideshow?.slides && <Slideshow slides={page.slideshow.slides} />}
       <Container maxW={'container.xl'} px={4} py={5}>
         <Heading as="h1" fontSize="6xl" py={10}>
-          {data.home.title}
+          {page.title}
         </Heading>
-        {data?.home?.content && (
-          <StructuredContent content={data.home.content} />
-        )}
+        {page.content && <StructuredContent content={page.content} />}
       </Container>
     </Layout>
   );
 };
 
 export async function getStaticProps() {
-  // console.log(queries.home);
-  const site = await doQuery(queries.siteQuery, null);
-  const layout = site.data;
-
   const response = await doQuery(queries.home, null);
-  const { data } = response;
+  const page = response?.data?.home;
+
+  const site = await doQuery(queries.siteQuery, null);
+  const favicon = site?.data?.site?.favicon || [];
+  const metatags = [...favicon, ...page.seo];
+  const layout = { ...site.data, metatags };
 
   return {
-    props: { data, layout }
+    props: { page, layout }
   };
 }
 

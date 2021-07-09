@@ -14,7 +14,6 @@ function Post({ page, layout }) {
   return (
     <Layout data={layout}>
       {page?.slideshow?.slides && <Slideshow slides={page.slideshow.slides} />}
-      {page?.seo && <SEO tags={page.seo} />}
       {page?.pic && <HeroImage pic={page.pic} small={true} />}
       <Container maxW={'container.xl'} px={4} py={5}>
         <BreadCrumbs paths={breadcrumbs} />
@@ -44,7 +43,9 @@ export async function getStaticProps({ params }) {
   const page = response?.data?.page || null;
 
   const site = await doQuery(queries.siteQuery, null);
-  const layout = site.data;
+  const favicon = site?.data?.site?.favicon || [];
+  const metatags = [...favicon, ...page.seo];
+  const layout = { ...site.data, metatags };
 
   // Pass post data to the page via props
   return { props: { page, layout } };
