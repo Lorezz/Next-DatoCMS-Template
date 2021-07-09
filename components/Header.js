@@ -93,7 +93,7 @@ const DesktopNav = ({ nav }) => {
                 <PopoverContent
                   border={0}
                   boxShadow={'xl'}
-                  bg={useColorModeValue('white', 'gray.800')}
+                  bg={useColorModeValue('white', 'gray.900')}
                   p={4}
                   rounded={'xl'}
                   minW={'sm'}>
@@ -120,12 +120,14 @@ const DesktopSubNav = ({ label, href = '#', subLabel = '' }) => {
         display={'block'}
         p={2}
         rounded={'md'}
-        _hover={{ bg: useColorModeValue('pink.50', 'gray.900') }}>
+        _hover={{ bg: useColorModeValue('gray.50', 'gray.800') }}>
         <Stack direction={'row'} align={'center'}>
           <Box>
             <Text
               transition={'all .3s ease'}
-              _groupHover={{ color: 'pink.400' }}
+              _groupHover={{
+                color: useColorModeValue('purple.400', 'green.200')
+              }}
               fontWeight={500}>
               {label}
             </Text>
@@ -139,7 +141,12 @@ const DesktopSubNav = ({ label, href = '#', subLabel = '' }) => {
             justify={'flex-end'}
             align={'center'}
             flex={1}>
-            <Icon color={'pink.400'} w={5} h={5} as={ChevronRightIcon} />
+            <Icon
+              color={useColorModeValue('purple.400', 'green.200')}
+              w={5}
+              h={5}
+              as={ChevronRightIcon}
+            />
           </Flex>
         </Stack>
       </Link>
@@ -226,14 +233,14 @@ const Header = ({ data }) => {
   return (
     <Box>
       <Flex
-        bg={useColorModeValue('white', 'gray.800')}
+        bg={useColorModeValue('white', 'gray.900')}
         color={useColorModeValue('gray.600', 'white')}
         minH={'60px'}
         py={{ base: 2 }}
         px={{ base: 12 }}
         borderBottom={1}
         borderStyle={'solid'}
-        borderColor={useColorModeValue('gray.200', 'gray.900')}
+        borderColor={useColorModeValue('gray.200', 'black')}
         align={'center'}>
         <Flex
           flex={{ base: 1, md: 'auto' }}

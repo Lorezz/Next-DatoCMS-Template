@@ -13,7 +13,7 @@ import { Image as DatoImage } from 'react-datocms';
 
 const SwiperCrousel = ({ slides }) => {
   return (
-    <Box w={'100%'} maxH={'80vh'} position="relative" px={4}>
+    <Box w={'100%'} maxH={'80vh'} position="relative" p={4}>
       <Swiper
         spaceBetween={50}
         slidesPerView={1}
@@ -30,6 +30,8 @@ const SwiperCrousel = ({ slides }) => {
             <SwiperSlide key={id}>
               <Box w={'100%'} maxH={'80vh'} position="relative">
                 <Box
+                  right={0}
+                  top={0}
                   position="absolute"
                   zIndex={100}
                   color="white"

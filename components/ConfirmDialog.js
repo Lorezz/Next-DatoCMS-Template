@@ -10,7 +10,7 @@ import {
   useDisclosure
 } from '@chakra-ui/react';
 
-function ConfirmDialog({ id, handleConfirm, type = 'post' }) {
+function ConfirmDialog({ id, handleConfirm, type = 'Delete' }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const remove = () => {
@@ -22,16 +22,16 @@ function ConfirmDialog({ id, handleConfirm, type = 'post' }) {
   };
   return (
     <>
-      <Button onClick={onOpen}>remove {type}</Button>
+      <Button onClick={onOpen}>Confirm {type}}</Button>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Remove {type}</ModalHeader>
+          <ModalHeader>{type}</ModalHeader>
           <ModalCloseButton />
-          <ModalBody>Really want to proceed and remove this {type} ?</ModalBody>
+          <ModalBody>Really want to proceed ?</ModalBody>
           <ModalFooter>
             <Button colorScheme="red" onClick={remove}>
-              Yes Remove {type}
+              Yes {type}
             </Button>
             <Button variant="ghost" mr={3} onClick={onClose}>
               Cancel
