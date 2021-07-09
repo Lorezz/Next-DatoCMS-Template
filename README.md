@@ -6,7 +6,7 @@ This project uses [Chackra Ui](https://chakra-ui.com/) as Ui library, and cotain
 
 This project contains also some examples from [Framer Motion](https://www.framer.com/docs/examples/).
 
-Contains examples of how to use DatoCMS Metatags for SEO, StructuredText, ModularContent, Dato ResponsiveImage, Mux video stream, Embedded video from Youtube or Vimeo, Leaflet and Mapbox Map, Code Highlighter Swiper Carousel and several other useful Blocks.
+Contains examples of how to use DatoCMS Metatags for SEO, StructuredText, ModularContent, Dato ResponsiveImage, Mux video stream, Embedded video from Youtube or Vimeo, Leaflet and Mapbox Map, Code Highlighter, Swiper Carousel and several other useful Blocks.
 
 ## Features in progress:
 
