@@ -6,6 +6,7 @@ import { Image } from 'react-datocms';
 import Layout from 'components/Layout';
 import StructuredContent from 'components/StructuredContent';
 import BreadCrumbs from 'components/BreadCrumbs';
+import HeroImage from 'components/HeroImage';
 
 function Post({ post, layout }) {
   const breadcrumbs = [
@@ -15,16 +16,7 @@ function Post({ post, layout }) {
   ];
   return (
     <Layout data={layout}>
-      {post?.pic && (
-        <Container
-          maxW={{ base: '100vw', md: '95vw', lg: '90vw', xl: '80vw' }}
-          px={4}
-          py={5}>
-          <Box>
-            <Image data={post.pic.responsiveImage} width={600} />
-          </Box>
-        </Container>
-      )}
+      {post?.pic && <HeroImage pic={post.pic} small={false} />}
       <Container maxW={'container.xl'} px={4} py={5}>
         <BreadCrumbs paths={breadcrumbs} />
         <Heading as="h1" fontSize="6xl" py={10}>

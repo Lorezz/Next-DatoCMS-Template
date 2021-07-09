@@ -12,7 +12,7 @@ const HeroImage = ({ pic, small = false }) => {
           <Image src={pic.url} />
         </Box>
       ) : (
-        <Box>
+        <Box maxW={{ base: '100vw', md: '95vw', lg: '90vw', xl: '80vw' }}>
           <ProgressiveImage data={pic.responsiveImage} />
         </Box>
       )}
