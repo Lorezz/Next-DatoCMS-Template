@@ -1,6 +1,6 @@
 # Next-DatoCMS-Template
 
-A free to use DatoCMS template and a Next.js app sample to create a complete site. You can duplicate this template and deploy the frontend from GitHub.
+A free to use DatoCMS template and an open-source Next.js sample to create a complete site. You can duplicate this template and deploy the frontend from GitHub.
 
 This project uses [Chackra Ui](https://chakra-ui.com/) as Ui library, and cotains some samples block from [Chakra Templates](https://chakra-templates.dev/) .
 
