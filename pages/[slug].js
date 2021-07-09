@@ -28,6 +28,7 @@ function Post({ page, layout }) {
 }
 
 export async function getStaticPaths() {
+  
   const response = await doQuery(queries.pages, null);
   const pages = response?.data?.pages || [];
   const paths = pages.map((page) => ({

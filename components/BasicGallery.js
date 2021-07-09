@@ -49,13 +49,14 @@ const BasicGallery = ({ images }) => {
           rounded="lg">
           {images.map((i) => (
             <Box
+              key={i.id}
               onClick={() => toggleImage(i)}
               transform="scale(1.0)"
               transition="0.3s ease-in-out"
               _hover={{
                 transform: 'scale(1.05)'
               }}>
-              <Image key={i.id} data={i.responsiveImage} />
+              <Image data={i.responsiveImage} />
             </Box>
           ))}
         </SimpleGrid>
