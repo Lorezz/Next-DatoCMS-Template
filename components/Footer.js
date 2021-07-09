@@ -16,6 +16,8 @@ import {
 import { FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
 import { BiMailSend } from 'react-icons/bi';
 
+import { resolvePage } from 'lib/utils';
+
 const Logo = (props) => {
   return <Image src="/logo.png" {...props} />;
 };
@@ -70,7 +72,7 @@ const Column = ({ column }) => {
       <ListHeader>{title}</ListHeader>
       {pages?.filter(Boolean).map((page) => {
         return (
-          <Link key={page.id || 'home'} href={page.slug ?? '/'}>
+          <Link key={page.id || 'home'} href={resolvePage(page)}>
             <a>{page.title}</a>
           </Link>
         );
