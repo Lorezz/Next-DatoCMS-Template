@@ -1,5 +1,19 @@
 # Next-DatoCMS-Template
 
+A free to use DatoCMS template and a Next.js app sample to create a complete site. You can duplicate this template and deploy the frontend from GitHub.
+
+This project uses [Chackra Ui](https://chakra-ui.com/) as Ui library, and cotains some samples block from [Chakra Templates](https://chakra-templates.dev/) .
+
+This project contains also some examples from [Framer Motion](https://www.framer.com/docs/examples/).
+
+Contains examples of how to use StructuredText, ModularContent, Dato ResponsiveImage, Mux video stream, Embedded video from Youtube or Vimeo, Leaflet and Mapbox Map, Swiper Carousel and several other useful Blocks.
+
+## Features in progress:
+
+- multi language
+- algolia instant search
+- datocms full text search
+
 ![preview](https://www.datocms-assets.com/47575/1625869520-screenshot-2021-07-10-at-00-24-19.png)
 
 repository: [https://github.com/Lorezz/Next-DatoCMS-Template.git](https://github.com/Lorezz/Next-DatoCMS-Template.git)

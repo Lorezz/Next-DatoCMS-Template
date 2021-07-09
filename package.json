@@ -4,6 +4,10 @@
   "private": true,
   "keywords": [],
   "author": "Lorenzo Ponticelli aka Lorezz <point.point@gmail.com> (https://lorezz.me/)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Lorezz/Next-DatoCMS-Template.git"
+},
   "scripts": {
     "dev": "next dev",
     "build": "next build",
