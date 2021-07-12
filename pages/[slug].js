@@ -3,8 +3,10 @@ import { doQuery } from 'lib/api';
 import { Heading, Container } from '@chakra-ui/react';
 import Layout from 'components/Layout';
 import StructuredContent from 'components/StructuredContent';
+import ModularContent from 'components/ModularContent';
 import BreadCrumbs from 'components/BreadCrumbs';
 import HeroImage from 'components/HeroImage';
+import Slideshow from 'components/Slideshow';
 
 function Post({ page, layout }) {
   const breadcrumbs = [
@@ -20,15 +22,14 @@ function Post({ page, layout }) {
         <Heading as="h1" fontSize="6xl" py={10}>
           {page?.title}
         </Heading>
-        {page?.excerpt && <StructuredContent content={page.excerpt} />}
         {page?.content && <StructuredContent content={page.content} />}
+        {page?.modBlocks && <ModularContent content={page.modBlocks} />}
       </Container>
     </Layout>
   );
 }
 
 export async function getStaticPaths() {
-  
   const response = await doQuery(queries.pages, null);
   const pages = response?.data?.pages || [];
   const paths = pages.map((page) => ({
@@ -38,7 +39,6 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  console.log('params', params);
   const { slug } = params;
   const response = await doQuery(queries.page, { slug });
   const page = response?.data?.page || null;

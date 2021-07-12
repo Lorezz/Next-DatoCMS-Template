@@ -1,23 +1,6 @@
-import {
-  Box,
-  Heading,
-  Text,
-  OrderedList,
-  UnorderedList,
-  ListItem
-} from '@chakra-ui/react';
-import {
-  isList,
-  isListItem,
-  isParagraph,
-  isBlockquote,
-  isCode,
-  isHeading
-} from 'datocms-structured-text-utils';
-// import { render as toPlainText } from 'datocms-structured-text-to-plain-text';
+import { Box, Heading, Text } from '@chakra-ui/react';
 
 import LinkBlock from 'components/LinkBlock';
-import InternalLink from 'components/InternalLink';
 import CodeHilight from 'components/CodeHilight';
 import BasicGallery from 'components/BasicGallery';
 import VideoEmbedded from 'components/VideoEmbedded';
@@ -30,6 +13,43 @@ const ModularContent = ({ content }) => {
   const renderBlock = (record) => {
     // console.log('block', record.__typename);
     switch (record.__typename) {
+      case 'FeatureBlockRecord':
+        return (
+          <Text py={4} key={record.id}>
+            {record.title}
+          </Text>
+        );
+      case 'PricingBlockRecord':
+        return (
+          <Text py={4} key={record.id}>
+            {record.title}
+          </Text>
+        );
+      case 'StatsBlockRecord':
+        return (
+          <Text py={4} key={record.id}>
+            {record.title}
+          </Text>
+        );
+      case 'TeamBlockRecord':
+        return (
+          <Text py={4} key={record.id}>
+            {record.title}
+          </Text>
+        );
+      case 'TestimonialsBlockRecord':
+        return (
+          <Text py={4} key={record.id}>
+            {record.title}
+          </Text>
+        );
+      case 'WidgetBlockRecord':
+        return (
+          <Text py={4} key={record.id}>
+            {record.title}
+          </Text>
+        );
+
       case 'ParagraphRecord':
         return (
           <Text py={4} key={record.id}>

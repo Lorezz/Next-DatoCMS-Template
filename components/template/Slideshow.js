@@ -51,7 +51,9 @@ const Slideshow = () => {
   return (
     <Flex
       width="full"
-      h={{ base: '20vh', sm: '30vh', md: '40vh', lg: '50vh', xl: '60vh' }}
+      bg="gray.900"
+      minH={{ base: 250, sm: 350, md: 500, lg: 720, xl: 960 }}
+      maxH={'100%'}
       position="relative"
       overflow="hidden"
       justify-content="center"
@@ -61,7 +63,9 @@ const Slideshow = () => {
           style={{
             position: 'absolute',
             maxWidth: '100%',
-            width: '100%'
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover'
           }}
           key={page}
           src={images[imageIndex]}

@@ -13,6 +13,7 @@ import { AnimateSharedLayout, AnimatePresence, motion } from 'framer-motion';
 
 const MotionBox = motion(Box);
 const ZINDEX = 10;
+
 const items = [
   // Photo by ivan Torres on Unsplash
   {
@@ -130,12 +131,15 @@ function Card({ id, perc, title, category, theme, onSelect }) {
 }
 
 export function List({ selectedId, handleSelect }) {
+  const [isLargerThan640] = useMediaQuery('(min-width:640px)');
   const selectCard = (id) => {
     console.log('card', id);
     handleSelect(id);
   };
   const size = items.length / 4 + (items.length % 4);
-  const pattern = ['60%', '35%', '35%', '60%'];
+  const pattern = isLargerThan640
+    ? ['60%', '35%', '35%', '60%']
+    : ['90%', '90%', '90%', '90%'];
   const dimensions = Array(size).fill(pattern).flat();
   return (
     <Wrap spacing="20px" justify="center">
@@ -154,7 +158,7 @@ export function List({ selectedId, handleSelect }) {
 
 export function Item({ id, onClose }) {
   const { category, title } = items.find((item) => item.id === id);
-
+  const [isLargerThan640] = useMediaQuery('(min-width:640px)');
   return (
     <MotionBox
       onClick={() => onClose()}
@@ -174,7 +178,7 @@ export function Item({ id, onClose }) {
       width="100vw"
       height="100vh"
       overflow="hidden"
-      padding="20vh 20vw"
+      padding={isLargerThan640 ? '20vh 20vw' : '30vh 1vw'}
       zIndex={ZINDEX}>
       <MotionBox
         position={'relative'}

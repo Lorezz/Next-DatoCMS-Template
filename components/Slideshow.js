@@ -24,7 +24,7 @@ const SwiperCrousel = ({ slides }) => {
         // onSlideChange={() => console.log('slide change')}
         // onSwiper={(swiper) => console.log(swiper)}
       >
-        {slides.map(({ title, image }) => {
+        {slides.map(({ title, image, alt }) => {
           const { id, copyright, author } = image;
           return (
             <SwiperSlide key={id}>
@@ -51,6 +51,14 @@ const SwiperCrousel = ({ slides }) => {
                         sm: 'lg',
                         md: 'xl'
                       }}>{` ${copyright} ${author}`}</Text>
+                  )}
+                  {alt && (
+                    <Text
+                      fontSize={{
+                        base: 'md',
+                        sm: 'lg',
+                        md: 'xl'
+                      }}>{` ${alt}`}</Text>
                   )}
                 </Box>
                 <DatoImage data={image.responsiveImage} />
