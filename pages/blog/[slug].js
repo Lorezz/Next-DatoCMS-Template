@@ -1,12 +1,13 @@
-import * as queries from 'lib/queries';
-import { doQuery } from 'lib/api';
-import { Box, Heading, Container } from '@chakra-ui/react';
-import { Image } from 'react-datocms';
+import { Heading, Container } from '@chakra-ui/react';
 
 import Layout from 'components/Layout';
+import HeroImage from 'components/HeroImage';
 import StructuredContent from 'components/StructuredContent';
 import BreadCrumbs from 'components/BreadCrumbs';
-import HeroImage from 'components/HeroImage';
+
+import * as queries from 'lib/queries';
+import { doQuery } from 'lib/api';
+import { getLayoutData } from 'lib/utils';
 
 function Post({ post, layout }) {
   const breadcrumbs = [
@@ -45,9 +46,7 @@ export async function getStaticProps({ params }) {
   const post = response?.data?.post;
 
   const site = await doQuery(queries.siteQuery, null);
-  const favicon = site?.data?.site?.favicon || [];
-  const metatags = [...favicon, ...post.seo];
-  const layout = { ...site.data, metatags };
+  const layout = getLayoutData(site, post?.seo);
 
   return { props: { post, layout } };
 }

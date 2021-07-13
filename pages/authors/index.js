@@ -8,13 +8,15 @@ import {
   Avatar
 } from '@chakra-ui/react';
 
-import { doQuery } from 'lib/api';
-import * as queries from 'lib/queries';
 import Layout from 'components/Layout';
 import BreadCrumbs from 'components/BreadCrumbs';
 import HeroImage from 'components/HeroImage';
 import StructuredContent from 'components/StructuredContent';
 import ModularContent from 'components/ModularContent';
+
+import { doQuery } from 'lib/api';
+import * as queries from 'lib/queries';
+import { getLayoutData } from 'lib/utils';
 
 const AuthorsIndexPage = ({ authors, page, layout }) => {
   const breadcrumbs = [
@@ -67,9 +69,7 @@ export async function getStaticProps() {
   const page = pageResponse?.data?.page || null;
 
   const site = await doQuery(queries.siteQuery, null);
-  const favicon = site?.data?.site?.favicon || [];
-  const metatags = [...favicon, ...page.seo];
-  const layout = { ...site.data, metatags };
+  const layout = getLayoutData(site, page?.seo);
 
   return {
     props: { authors, page, layout }

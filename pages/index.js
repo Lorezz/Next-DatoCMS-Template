@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heading, Container } from '@chakra-ui/react';
+import { Container } from '@chakra-ui/react';
 
 import Layout from 'components/Layout';
 import Slideshow from 'components/Slideshow';
@@ -8,6 +8,7 @@ import ModularContent from 'components/ModularContent';
 
 import * as queries from 'lib/queries';
 import { doQuery } from 'lib/api';
+import { getLayoutData } from 'lib/utils';
 
 const BlogIndexPage = ({ page, layout }) => {
   return (
@@ -26,10 +27,12 @@ export async function getStaticProps() {
   const response = await doQuery(queries.home, null);
   const page = response?.data?.home;
 
-  const site = await doQuery(queries.siteQuery, null);
-  const favicon = site?.data?.site?.favicon || [];
-  const metatags = [...favicon, ...page.seo];
-  const layout = { ...site.data, metatags };
+  if (!page) {
+    console.log('HOME QUERY', queries.home);
+  }
+
+  const siteResponse = await doQuery(queries.siteQuery, null);
+  const layout = getLayoutData(siteResponse, page?.seo);
 
   return {
     props: { page, layout }

@@ -2,9 +2,6 @@ import Head from 'next/head';
 import { renderMetaTags } from 'react-datocms';
 
 const SEO = ({ tags, firstPublishedAt = null }) => {
-  // if (!tags || (tags.length >= 0 && !firstPublishedAt)) {
-  //   return null;
-  // }
   return (
     <Head>
       {renderMetaTags(tags)}

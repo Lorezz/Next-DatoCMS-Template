@@ -70,9 +70,7 @@ const DesktopNav = ({ nav }) => {
             <Popover trigger={'hover'} placement={'bottom-start'}>
               <PopoverTrigger>
                 <Box outline="none">
-                  <NextLink
-                    href={navItem.href ? resolvePage(navItem.href) : '#'}
-                    passHref>
+                  <NextLink href={resolvePage(navItem.href)} passHref>
                     <Link
                       mt={10}
                       p={2}

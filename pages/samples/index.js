@@ -1,22 +1,20 @@
-import { Flex, Container, Box } from '@chakra-ui/react';
+import { Container, Box } from '@chakra-ui/react';
 
-import Header from 'components/template/Header';
-import Footer from 'components/template/Footer';
-import Hero from 'components/template/Hero';
+import Hero from 'components/template/HeroCta';
 import Stats from 'components/template/Stats';
-import FeatureLine from 'components/template/FeatureLine';
 import FeatureBlock from 'components/template/FeatureBlock';
+import FeaturedPost from 'components/template/FeaturedPost';
+import FeatureContent from 'components/template/FeatureContent';
 import Testimonials from 'components/template/Testimonials';
-import FeatureList from 'components/template/FeatureList';
+import TestimonialQuotes from 'components/template/FeatureList';
 import Pricing from 'components/template/Pricing';
 import Newsletter from 'components/template/Newsletter';
 
-import FeaturedPost from 'components/template/FeaturedPost';
 import PostGrid from 'components/template/PostGrid';
 import ProductGrid from 'components/template/ProductGrid';
-import ProfileGrid from 'components/template/ProfileGrid';
+import TeamBlock from 'components/template/ProfileGrid';
 
-import Slideshow from 'components/template/Slideshow';
+import Carousel from 'components/template/Carousel';
 import Gallery from 'components/template/Gallery';
 
 import Layout from 'components/template/Layout';
@@ -25,20 +23,20 @@ const page = () => {
   return (
     <Layout>
       <Box position="relative">
-        <Slideshow />
+        <Carousel />
       </Box>
       <Container maxW={'7xl'}>
         <Hero />
         <Gallery />
-        <FeatureLine />
-        <FeaturedPost />
         <FeatureBlock />
+        <FeaturedPost />
+        <FeatureContent />
         <PostGrid />
         <ProductGrid />
-        <ProfileGrid />
+        <TeamBlock />
         <Testimonials />
         <Stats />
-        <FeatureList />
+        <TestimonialQuotes />
         <Pricing />
         <Newsletter />
       </Container>

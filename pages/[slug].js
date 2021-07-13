@@ -1,6 +1,8 @@
+import { Heading, Container } from '@chakra-ui/react';
+
 import * as queries from 'lib/queries';
 import { doQuery } from 'lib/api';
-import { Heading, Container } from '@chakra-ui/react';
+import { getLayoutData } from 'lib/utils';
 import Layout from 'components/Layout';
 import StructuredContent from 'components/StructuredContent';
 import ModularContent from 'components/ModularContent';
@@ -43,10 +45,13 @@ export async function getStaticProps({ params }) {
   const response = await doQuery(queries.page, { slug });
   const page = response?.data?.page || null;
 
-  const site = await doQuery(queries.siteQuery, null);
-  const favicon = site?.data?.site?.favicon || [];
-  const metatags = [...favicon, ...page.seo];
-  const layout = { ...site.data, metatags };
+  if (!page) {
+    console.log('PAGE QUERY', queries.home);
+    console.log('PAGE SLUG', slug);
+  }
+
+  const siteResponse = await doQuery(queries.siteQuery, null);
+  const layout = getLayoutData(siteResponse, page?.seo);
 
   // Pass post data to the page via props
   return { props: { page, layout } };

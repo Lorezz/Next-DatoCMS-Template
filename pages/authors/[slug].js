@@ -1,10 +1,12 @@
-import * as queries from 'lib/queries';
-import { doQuery } from 'lib/api';
 import { Box, Text, Container, VStack } from '@chakra-ui/react';
 import { Image } from 'react-datocms';
 
 import Layout from 'components/Layout';
 import BreadCrumbs from 'components/BreadCrumbs';
+
+import { doQuery } from 'lib/api';
+import { getLayoutData } from 'lib/utils';
+import * as queries from 'lib/queries';
 
 function Author({ author, layout }) {
   const breadcrumbs = [
@@ -48,9 +50,7 @@ export async function getStaticProps({ params }) {
   const author = response?.data?.author || null;
 
   const site = await doQuery(queries.siteQuery, null);
-  const favicon = site?.data?.site?.favicon || [];
-  const metatags = [...favicon, ...author.seo];
-  const layout = { ...site.data, metatags };
+  const layout = getLayoutData(site, author?.seo);
 
   return { props: { author, layout } };
 }
