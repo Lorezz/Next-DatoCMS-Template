@@ -1,7 +1,14 @@
 import NextLink from 'next/link';
 import { Badge, useColorModeValue } from '@chakra-ui/react';
 
-const TagBadge = ({ slug, name, bgColor, color, size = 'md' }) => {
+const TagBadge = ({
+  slug,
+  name,
+  bgColor,
+  color,
+  size = 'md',
+  noDefault = false
+}) => {
   const colors = {
     light: 'purple.400',
     light_hover: 'purple.500',
@@ -21,6 +28,7 @@ const TagBadge = ({ slug, name, bgColor, color, size = 'md' }) => {
       color: color?.hex
     };
   }
+
   return (
     <NextLink href={`/tags/${slug}`}>
       <Badge
@@ -29,7 +37,8 @@ const TagBadge = ({ slug, name, bgColor, color, size = 'md' }) => {
         cursor="pointer"
         px={2}
         py={1}
-        bg={useColorModeValue('gray.50', 'gray.800')}
+        bg={noDefault ? bgColor.hex : useColorModeValue('gray.50', 'gray.800')}
+        color={noDefault ? color.hex : useColorModeValue('black', 'white')}
         _hover={hover}
         fontWeight={'400'}>
         {`#${name}`}

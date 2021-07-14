@@ -88,14 +88,14 @@ export async function getStaticPaths() {
   const response = await doQuery(queries.authors, null);
   const items = response?.data?.authors || [];
   const paths = items.map((item) => ({
-    params: { slug: item.slug }
+    params: { author: item.slug }
   }));
   console.log('paths', paths);
   return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params }) {
-  const response = await doQuery(queries.author, { slug: params.slug });
+  const response = await doQuery(queries.author, { slug: params.author });
   const author = response?.data?.author || null;
 
   const site = await doQuery(queries.siteQuery, null);

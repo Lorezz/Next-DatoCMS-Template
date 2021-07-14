@@ -5,16 +5,16 @@ import Layout from 'components/Layout';
 import BreadCrumbs from 'components/BreadCrumbs';
 import HeroImage from 'components/HeroImage';
 import StructuredContent from 'components/StructuredContent';
-import PostCard from 'components/PostCard';
+import TagBadge from 'components/TagBadge';
 
 import { doQuery } from 'lib/api';
 import * as queries from 'lib/queries';
 import { getLayoutData } from 'lib/utils';
 
-const BlogIndexPage = ({ posts, page, layout }) => {
+const BlogIndexPage = ({ tags, page, layout }) => {
   const breadcrumbs = [
     { title: 'Home', path: '/' },
-    { title: 'Blog', path: `/blog`, isCurrentPage: true }
+    { title: 'Tags', path: `/tags`, isCurrentPage: true }
   ];
   return (
     <Layout data={layout}>
@@ -25,7 +25,6 @@ const BlogIndexPage = ({ posts, page, layout }) => {
         <Heading as="h1" fontSize="6xl" py={10}>
           {page?.title}
         </Heading>
-        {page?.excerpt && <StructuredContent content={page.excerpt} />}
         {page?.content && <StructuredContent content={page.content} />}
 
         <SimpleGrid
@@ -33,11 +32,13 @@ const BlogIndexPage = ({ posts, page, layout }) => {
           spacing="8"
           p="10"
           rounded="lg">
-          {posts?.map((post) => {
+          {tags?.map((tag) => {
             return (
-              <Box key={post.id}>
-                <Link href={`/blog/${post.slug}`}>
-                  <PostCard post={post} />
+              <Box key={tag.id}>
+                <Link href={`/tags/${tag.slug}`}>
+                  <Box pointer="cursor">
+                    <TagBadge {...tag} size="3xl" noDefault={true} />
+                  </Box>
                 </Link>
               </Box>
             );
@@ -48,35 +49,19 @@ const BlogIndexPage = ({ posts, page, layout }) => {
   );
 };
 
-//  {
-//    posts?.map((post) => {
-//      return (
-//        <Box key={post.id}>
-//          <Link href={`/blog/${post.slug}`}>
-//            <a>
-//              {post.pic && <Avatar title={post.title} src={post.pic.url} />}
-//              <Text>{post.title}</Text>
-//            </a>
-//          </Link>
-//          <StructuredText data={post.excerpt} />
-//        </Box>
-//      );
-//    });
-//  }
-
 export async function getStaticProps() {
-  const response = await doQuery(queries.postList, null);
-  const posts = response?.data?.posts || [];
+  const response = await doQuery(queries.tagList, null);
+  const tags = response?.data?.tags || [];
 
   const slug = 'tags';
-  const pageResponse = await doQuery(queries.tags, { slug });
+  const pageResponse = await doQuery(queries.page, { slug });
   const page = pageResponse?.data?.page || null;
 
   const site = await doQuery(queries.siteQuery, null);
   const layout = getLayoutData(site, page?.seo);
 
   return {
-    props: { posts, page, layout }
+    props: { tags, page, layout }
   };
 }
 

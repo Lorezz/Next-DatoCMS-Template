@@ -11,6 +11,7 @@ const Layout = ({ data, children }) => {
       <Flex
         minHeight="100vh"
         width="100vw"
+        h={'full'}
         direction="column"
         // overflow="hidden"
         justify="space-between">

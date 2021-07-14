@@ -34,14 +34,14 @@ export async function getStaticPaths() {
   const response = await doQuery(queries.postList, null);
   const posts = response?.data?.posts || [];
   const paths = posts.map((post) => ({
-    params: { slug: post.slug }
+    params: { post: post.slug }
   }));
 
   return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params }) {
-  const { slug } = params;
+  const { post: slug } = params;
   const response = await doQuery(queries.post, { slug });
   const post = response?.data?.post;
 

@@ -55,7 +55,7 @@ export default function WithSubnavigation() {
           />
         </Flex>
         <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
-          <NextLink href="/sample">
+          <NextLink href="/">
             <a>
               <Text
                 textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
@@ -77,12 +77,12 @@ export default function WithSubnavigation() {
           direction={'row'}
           spacing={6}>
           <ColorMode />
-          <NextLink href="login">
+          <NextLink href="/samples/login">
             <Button as={'a'} fontSize={'sm'} fontWeight={400} variant={'link'}>
               Sign In
             </Button>
           </NextLink>
-          <NextLink href="login">
+          <NextLink href="/samples/login">
             <Button
               as={'a'}
               display={{ base: 'none', md: 'inline-flex' }}

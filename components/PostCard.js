@@ -1,5 +1,5 @@
 import NextLink from 'next/link';
-import { Image } from 'react-datocms';
+
 import {
   Box,
   Center,
@@ -8,6 +8,7 @@ import {
   Stack,
   Avatar,
   Badge,
+  Image,
   useColorModeValue
 } from '@chakra-ui/react';
 import { StructuredText } from 'react-datocms';
@@ -46,7 +47,7 @@ function PostCard({ post }) {
             mb={6}
             pos={'relative'}
             overflow={'hidden'}>
-            {pic && <Image data={pic?.responsiveImage} height={210} />}
+            {pic && <Image src={pic?.url} />}
           </Box>
         </NextLink>
         <Stack>
