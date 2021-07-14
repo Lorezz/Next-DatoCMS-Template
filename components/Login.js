@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useState } from 'react';
 import * as yup from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -17,14 +17,12 @@ import {
   AlertIcon
 } from '@chakra-ui/react';
 
-import { StateContext } from 'lib/ctx';
-
 const Login = () => {
-  const [machine, sendToMachine] = useContext(StateContext);
-  const { error, loading } = machine.context;
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
   const defaultValues = {
-    email: process.env.NEXT_PUBLIC_EMAIL,
-    password: process.env.NEXT_PUBLIC_PASSWORD
+    email: '',
+    password: 'process.env.NEXT_PUBLIC_PASSWORD'
   };
 
   const schema = yup.object().shape({
@@ -40,9 +38,32 @@ const Login = () => {
     resolver: yupResolver(schema)
   });
 
+  const sendToServer = async (values) => {
+    setError(null);
+    setLoading(true);
+    try {
+      const fakeData = {
+        title: 'xxxxxx',
+        body: 'zzzzzzzzzz'
+      };
+      await fetch('https://jsonplaceholder.typicode.com/posts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(fakeData)
+      });
+    } catch (error) {
+      console.error(error);
+      setError(error.toString());
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const onSubmit = (values) => {
     console.log('form data', values);
-    sendToMachine('LOGIN', { values });
+    sendToServer(values);
   };
 
   return (

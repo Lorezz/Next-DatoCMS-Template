@@ -1,8 +1,18 @@
-import { Box, Text, Container, VStack } from '@chakra-ui/react';
-import { Image } from 'react-datocms';
+import {
+  Box,
+  Text,
+  Container,
+  VStack,
+  Avatar,
+  Heading,
+  useColorModeValue
+} from '@chakra-ui/react';
 
 import Layout from 'components/Layout';
 import BreadCrumbs from 'components/BreadCrumbs';
+import LinkBlock from 'components/LinkBlock';
+import TagBadge from 'components/TagBadge';
+import BlockQuote from 'components/BlockQuote';
 
 import { doQuery } from 'lib/api';
 import { getLayoutData } from 'lib/utils';
@@ -18,18 +28,57 @@ function Author({ author, layout }) {
       isCurrentPage: true
     }
   ];
+
+  const { nick, role, name, pic, tags, links, motto, bio } = author;
   return (
     <Layout data={layout}>
       <Container maxW={'container.xl'} px={4} py={5}>
         <BreadCrumbs paths={breadcrumbs} />
         <VStack>
-          {author?.pic && (
-            <Box width={300}>
-              <Image data={author.pic.responsiveImage} />
+          <Box mb={10} d="flex" flexDirection="column" alignItems="center">
+            {pic && (
+              <Box boxSize={600}>
+                <Avatar mb={10} size="full" src={pic.url} />
+              </Box>
+            )}
+            <Heading fontSize={'4xl'} as="h1" mb={5}>
+              {name}
+            </Heading>
+            <Text
+              fontSize="sm"
+              color={useColorModeValue('gray.900', 'gray.100')}>
+              {nick ? 'AKA ' + nick : ''}
+            </Text>
+            <Text fontWeight={600} color={'gray.500'} mb={4}>
+              {role ? role : ''}
+            </Text>
+            <Box>
+              {tags.map((t) => (
+                <TagBadge size={'xl'} {...t} key={t.id} />
+              ))}
             </Box>
-          )}
-          <Text>{author?.name}</Text>
+          </Box>
         </VStack>
+        <Box py={10}>
+          <BlockQuote node={{ attribution: name }}>{motto}</BlockQuote>
+        </Box>
+        <Box py={10}>
+          <Heading fontSize={'xl'} as="h3" my={5}>
+            Bio
+          </Heading>
+          <Text dangerouslySetInnerHTML={{ __html: bio }} />
+        </Box>
+
+        <Box py={10}>
+          <Heading fontSize={'xl'} as="h3" my={5}>
+            Links
+          </Heading>
+          {links.map((l) => (
+            <Box key={l.id}>
+              <LinkBlock block={l} />
+            </Box>
+          ))}
+        </Box>
       </Container>
     </Layout>
   );

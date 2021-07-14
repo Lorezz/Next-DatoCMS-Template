@@ -1,8 +1,10 @@
-import { Box, Text } from '@chakra-ui/react';
+import { Box, Text, useColorModeValue } from '@chakra-ui/react';
 
 const LinkBlock = ({ node, children }) => {
   return (
-    <Box borderLeftWidth={4} borderLeftColor="black">
+    <Box
+      borderLeftWidth={4}
+      borderLeftColor={useColorModeValue('black', 'white')}>
       <Box px={5}>
         <Text as="i" fontWeight="light">
           {children}
