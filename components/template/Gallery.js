@@ -2,7 +2,6 @@ import { useState } from 'react';
 import {
   Heading,
   Box,
-  Image,
   Text,
   Wrap,
   WrapItem,
@@ -106,7 +105,7 @@ function Card({ id, perc, title, category, theme, onSelect }) {
           top={0}
           left={0}
           layoutId={`card-image-container-${id}`}
-          backgroundImage={`url(images/${id}.jpg)`}
+          backgroundImage={`url(/images/${id}.jpg)`}
           backgroundSize="cover"
         />
         <MotionBox

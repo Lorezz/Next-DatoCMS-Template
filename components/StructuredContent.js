@@ -23,8 +23,10 @@ import CodeHilight from 'components/CodeHilight';
 import BasicGallery from 'components/BasicGallery';
 import VideoEmbedded from 'components/VideoEmbedded';
 import VideoPlayer from 'components/VideoPlayer';
-
 import BlockQuote from 'components/BlockQuote';
+import Gallery from 'components/Gallery';
+import HCta from 'components/HCta';
+import VCta from 'components/VCta';
 
 const StructuredContent = ({ content }) => {
   const renderBlock = (record) => {
@@ -33,7 +35,11 @@ const StructuredContent = ({ content }) => {
       case 'GalleryRecord':
         return (
           <Box key={record.id}>
-            <BasicGallery images={record.images} />
+            {record?.layout === 'motion' ? (
+              <Gallery images={record.images} />
+            ) : (
+              <BasicGallery images={record.images} />
+            )}
           </Box>
         );
       case 'LinkRecord':
@@ -43,7 +49,15 @@ const StructuredContent = ({ content }) => {
           </Box>
         );
       case 'CtaRecord':
-        return <Box key={record.id}>{'CTA'}</Box>;
+        return (
+          <Box key={record.id}>
+            {record?.layout === 'vertical' ? (
+              <VCta cta={record} />
+            ) : (
+              <HCta cta={record} />
+            )}
+          </Box>
+        );
       case 'EmbeddedVideoRecord':
         return <VideoEmbedded {...record} />;
       case 'InternalVideoRecord':

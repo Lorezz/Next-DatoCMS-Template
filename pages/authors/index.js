@@ -13,6 +13,7 @@ import BreadCrumbs from 'components/BreadCrumbs';
 import HeroImage from 'components/HeroImage';
 import StructuredContent from 'components/StructuredContent';
 import ModularContent from 'components/ModularContent';
+import ProfileCard from 'components/ProfileCard';
 
 import { doQuery } from 'lib/api';
 import * as queries from 'lib/queries';
@@ -43,14 +44,7 @@ const AuthorsIndexPage = ({ authors, page, layout }) => {
           {authors?.map((author) => {
             return (
               <Box key={author.id}>
-                <Link href={`/authors/${author.slug}`}>
-                  <a>
-                    {author.pic.url && (
-                      <Avatar name={author.name} src={author.pic.url} />
-                    )}
-                    <Text>{author.name}</Text>
-                  </a>
-                </Link>
+                <ProfileCard {...author} />
               </Box>
             );
           })}

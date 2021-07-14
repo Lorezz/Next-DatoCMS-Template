@@ -68,8 +68,8 @@ export async function getStaticProps() {
   const response = await doQuery(queries.postList, null);
   const posts = response?.data?.posts || [];
 
-  const slug = 'blog';
-  const pageResponse = await doQuery(queries.page, { slug });
+  const slug = 'tags';
+  const pageResponse = await doQuery(queries.tags, { slug });
   const page = pageResponse?.data?.page || null;
 
   const site = await doQuery(queries.siteQuery, null);
