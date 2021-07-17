@@ -14,6 +14,7 @@ import HeroImage from 'components/HeroImage';
 import StructuredContent from 'components/StructuredContent';
 import ModularContent from 'components/ModularContent';
 import ProfileCard from 'components/ProfileCard';
+import SearchAlgolia from 'components/SearchAlgolia';
 
 import { doQuery } from 'lib/api';
 import * as queries from 'lib/queries';
@@ -30,9 +31,13 @@ const AuthorsIndexPage = ({ authors, page, layout }) => {
       {page?.pic && <HeroImage pic={page.pic} small={true} />}
       <Container maxW={'container.xl'} px={4} py={5} justify="flex-start">
         <BreadCrumbs paths={breadcrumbs} />
+
         <Heading as="h1" fontSize="6xl" py={10}>
           {page?.title}
         </Heading>
+
+        <SearchAlgolia indexName={'dev_samples_authors'} />
+
         {page?.content && <StructuredContent content={page.content} />}
         {page?.modBlocks && <ModularContent content={page.modBlocks} />}
 
