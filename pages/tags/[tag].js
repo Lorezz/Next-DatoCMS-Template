@@ -1,11 +1,11 @@
 import { Box, Heading, Text, Container } from '@chakra-ui/react';
 import { Image } from 'react-datocms';
 
-import Layout from 'components/Layout';
-import HeroImage from 'components/HeroImage';
-import PostCard from 'components/PostCard';
-import ProfileCard from 'components/ProfileCard';
-import BreadCrumbs from 'components/BreadCrumbs';
+import Layout from 'components/layout/Layout';
+import Hero from 'components/heros/Hero';
+import PostCard from 'components/cards/PostCard';
+import ProfileCard from 'components/cards/ProfileCard';
+import BreadCrumbs from 'components/layout/BreadCrumbs';
 
 import * as queries from 'lib/queries';
 import { doQuery } from 'lib/api';
@@ -24,35 +24,32 @@ function Tag({ data, layout }) {
 
   return (
     <Layout data={layout}>
-      <Box position="relative" h="full">
-        {pic && <Image data={pic.responsiveImage} />}
-
-        <Container maxW={'container.xl'} px={4} py={5}>
-          <BreadCrumbs paths={breadcrumbs} />
-          <Heading as="h1" fontSize="6xl" py={10}>
-            {name}
-          </Heading>
-          {noResults && (
-            <Text>Sorry This Tag is not associated to any Author or Post</Text>
-          )}
-          {matches?.people?.length > 0 && (
-            <Box>
-              <Heading as="h3">{'People'}</Heading>
-              {matches?.people?.map((a) => {
-                return <ProfileCard key={a.id} {...a} />;
-              })}
-            </Box>
-          )}
-          {matches?.posts?.length > 0 && (
-            <Box>
-              <Heading as="h3">{'Posts'}</Heading>
-              {matches?.posts?.map((p) => {
-                return <PostCard key={p.id} post={p} />;
-              })}
-            </Box>
-          )}
-        </Container>
-      </Box>
+      <Hero pic={pic} picSize={'big'} slideshow={null} />
+      <Container maxW={'container.xl'} px={4} py={5}>
+        <BreadCrumbs paths={breadcrumbs} />
+        <Heading as="h1" fontSize="6xl" py={10}>
+          {name}
+        </Heading>
+        {noResults && (
+          <Text>Sorry This Tag is not associated to any Author or Post</Text>
+        )}
+        {matches?.people?.length > 0 && (
+          <Box>
+            <Heading as="h3">{'People'}</Heading>
+            {matches?.people?.map((a) => {
+              return <ProfileCard key={a.id} {...a} />;
+            })}
+          </Box>
+        )}
+        {matches?.posts?.length > 0 && (
+          <Box>
+            <Heading as="h3">{'Posts'}</Heading>
+            {matches?.posts?.map((p) => {
+              return <PostCard key={p.id} post={p} />;
+            })}
+          </Box>
+        )}
+      </Container>
     </Layout>
   );
 }

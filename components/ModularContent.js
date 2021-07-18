@@ -1,21 +1,21 @@
 import { Box, Heading, Text } from '@chakra-ui/react';
 
-import LinkBlock from 'components/LinkBlock';
-import CodeHilight from 'components/CodeHilight';
-import BasicGallery from 'components/BasicGallery';
-import Gallery from 'components/Gallery';
-import VideoEmbedded from 'components/VideoEmbedded';
-import VideoPlayer from 'components/VideoPlayer';
-import BlockQuote from 'components/BlockQuote';
-import HCta from 'components/HCta';
-import VCta from 'components/VCta';
-import Stats from 'components/Stats';
-import Testimonials from 'components/Testimonials';
-import TestimonialQuotes from 'components/TestimonialQuotes';
-import Pricing from 'components/Pricing';
-import FeatureBlock from 'components/FeatureBlock';
-import TeamBlock from 'components/TeamBlock';
-import WidgetBlock from 'components/WidgetBlock';
+import BasicGallery from 'components/galleries/BasicGallery';
+import Gallery from 'components/galleries/Gallery';
+import VideoEmbedded from 'components/video/VideoEmbedded';
+import VideoPlayer from 'components/video/VideoPlayer';
+import HCta from 'components/cta/HCta';
+import VCta from 'components/cta/VCta';
+import Testimonials from 'components/testimonials/Testimonials';
+import TestimonialQuotes from 'components/testimonials/TestimonialQuotes';
+import LinkBlock from 'components/links/LinkBlock';
+import Stats from 'components/blocks/StatsBlock';
+import BlockQuote from 'components/blocks/BlockQuote';
+import CodeHilight from 'components/blocks/CodeHilight';
+import Pricing from 'components/blocks/PricingBlock';
+import FeatureBlock from 'components/blocks/FeatureBlock';
+import TeamBlock from 'components/blocks/TeamBlock';
+import WidgetBlock from 'components/blocks/WidgetBlock';
 
 const ModularContent = ({ content }) => {
   // console.log('content', content);

@@ -8,11 +8,11 @@ import {
   useColorModeValue
 } from '@chakra-ui/react';
 
-import Layout from 'components/Layout';
-import BreadCrumbs from 'components/BreadCrumbs';
-import LinkBlock from 'components/LinkBlock';
-import TagBadge from 'components/TagBadge';
-import BlockQuote from 'components/BlockQuote';
+import Layout from 'components/layout/Layout';
+import BreadCrumbs from 'components/layout/BreadCrumbs';
+import LinkBlock from 'components/blocks/LinkBlock';
+import TagBadge from 'components/blocks/TagBadge';
+import BlockQuote from 'components/blocks/BlockQuote';
 
 import { doQuery } from 'lib/api';
 import { getLayoutData } from 'lib/utils';

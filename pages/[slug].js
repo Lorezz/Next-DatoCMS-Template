@@ -3,12 +3,11 @@ import { Heading, Container } from '@chakra-ui/react';
 import * as queries from 'lib/queries';
 import { doQuery } from 'lib/api';
 import { getLayoutData } from 'lib/utils';
-import Layout from 'components/Layout';
+import Layout from 'components/layout/Layout';
 import StructuredContent from 'components/StructuredContent';
 import ModularContent from 'components/ModularContent';
-import BreadCrumbs from 'components/BreadCrumbs';
-import HeroImage from 'components/HeroImage';
-import Slideshow from 'components/Slideshow';
+import BreadCrumbs from 'components/layout/BreadCrumbs';
+import Hero from 'components/heros/Hero';
 
 function Post({ page, layout }) {
   const breadcrumbs = [
@@ -17,8 +16,7 @@ function Post({ page, layout }) {
   ];
   return (
     <Layout data={layout}>
-      {page?.slideshow?.slides && <Slideshow slides={page.slideshow.slides} />}
-      {page?.pic && <HeroImage pic={page.pic} small={true} />}
+      <Hero pic={page?.pic} picSize={'small'} slideshow={page?.slideshow} />
       <Container maxW={'container.xl'} px={4} py={5}>
         <BreadCrumbs paths={breadcrumbs} />
         <Heading as="h1" fontSize="6xl" py={10}>

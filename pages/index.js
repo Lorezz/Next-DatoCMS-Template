@@ -1,8 +1,8 @@
 import React from 'react';
 import { Container } from '@chakra-ui/react';
 
-import Layout from 'components/Layout';
-import Slideshow from 'components/Slideshow';
+import Layout from 'components/layout/Layout';
+import Hero from 'components/heros/Hero';
 import StructuredContent from 'components/StructuredContent';
 import ModularContent from 'components/ModularContent';
 
@@ -13,7 +13,7 @@ import { getLayoutData } from 'lib/utils';
 const BlogIndexPage = ({ page, layout }) => {
   return (
     <Layout data={layout}>
-      {page.slideshow?.slides && <Slideshow slides={page.slideshow.slides} />}
+      <Hero pic={page?.pic} picSize={'small'} slideshow={page?.slideshow} />
       <Container maxW={'container.xl'} px={4} py={5}>
         {/* <Heading as="h1" fontSize="6xl" py={10}>{page.title}</Heading> */}
         {page.content && <StructuredContent content={page.content} />}

@@ -1,7 +1,9 @@
 import { Box, Text } from '@chakra-ui/react';
-import MapBox from './MapMapbox';
-const MapLFL = dynamic(() => import('./MapLeaflet'), { ssr: false });
-const Map = dynamic(() => import('./MapMix'), { ssr: false });
+import MapBox from 'components/maps/MapMapbox';
+const MapLFL = dynamic(() => import('components/maps/MapLeaflet'), {
+  ssr: false
+});
+const Map = dynamic(() => import('components/maps/MapMix'), { ssr: false });
 
 function Location({ location, detail = false }) {
   if (!location) return null;

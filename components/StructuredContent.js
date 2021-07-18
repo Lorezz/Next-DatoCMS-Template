@@ -17,16 +17,16 @@ import {
 } from 'datocms-structured-text-utils';
 // import { render as toPlainText } from 'datocms-structured-text-to-plain-text';
 
-import LinkBlock from 'components/LinkBlock';
-import InternalLink from 'components/InternalLink';
-import CodeHilight from 'components/CodeHilight';
-import BasicGallery from 'components/BasicGallery';
-import VideoEmbedded from 'components/VideoEmbedded';
-import VideoPlayer from 'components/VideoPlayer';
-import BlockQuote from 'components/BlockQuote';
-import Gallery from 'components/Gallery';
-import HCta from 'components/HCta';
-import VCta from 'components/VCta';
+import BlockQuote from 'components/blocks/BlockQuote';
+import CodeHilight from 'components/blocks/CodeHilight';
+import LinkBlock from 'components/links/LinkBlock';
+import InternalLink from 'components/links/InternalLink';
+import BasicGallery from 'components/galleries/BasicGallery';
+import Gallery from 'components/galleries/Gallery';
+import VideoEmbedded from 'components/video/VideoEmbedded';
+import VideoPlayer from 'components/video/VideoPlayer';
+import HCta from 'components/cta/HCta';
+import VCta from 'components/cta/VCta';
 
 const StructuredContent = ({ content }) => {
   const renderBlock = (record) => {

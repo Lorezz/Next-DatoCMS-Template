@@ -1,9 +1,9 @@
 import { Heading, Container } from '@chakra-ui/react';
 
-import Layout from 'components/Layout';
-import HeroImage from 'components/HeroImage';
+import Layout from 'components/layout/Layout';
+import Hero from 'components/heros/Hero';
 import StructuredContent from 'components/StructuredContent';
-import BreadCrumbs from 'components/BreadCrumbs';
+import BreadCrumbs from 'components/layout/BreadCrumbs';
 
 import * as queries from 'lib/queries';
 import { doQuery } from 'lib/api';
@@ -17,7 +17,7 @@ function Post({ post, layout }) {
   ];
   return (
     <Layout data={layout}>
-      {post?.pic && <HeroImage pic={post.pic} small={false} />}
+      <Hero pic={post?.pic} picSize={'big'} slideshow={null} />
       <Container maxW={'container.xl'} px={4} py={5}>
         <BreadCrumbs paths={breadcrumbs} />
         <Heading as="h1" fontSize="6xl" py={10}>

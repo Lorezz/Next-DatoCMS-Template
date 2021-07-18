@@ -1,11 +1,11 @@
 import Link from 'next/link';
 import { Box, Heading, Container, SimpleGrid } from '@chakra-ui/react';
 
-import Layout from 'components/Layout';
-import BreadCrumbs from 'components/BreadCrumbs';
-import HeroImage from 'components/HeroImage';
+import Layout from 'components/layout/Layout';
+import BreadCrumbs from 'components/layout/BreadCrumbs';
+import Hero from 'components/heros/Hero';
 import StructuredContent from 'components/StructuredContent';
-import TagBadge from 'components/TagBadge';
+import TagBadge from 'components/blocks/TagBadge';
 
 import { doQuery } from 'lib/api';
 import * as queries from 'lib/queries';
@@ -18,8 +18,7 @@ const BlogIndexPage = ({ tags, page, layout }) => {
   ];
   return (
     <Layout data={layout}>
-      {page?.slideshow?.slides && <Slideshow slides={page.slideshow.slides} />}
-      {page?.pic && <HeroImage pic={page.pic} small={true} />}
+      <Hero pic={page?.pic} picSize={'small'} slideshow={page?.slideshow} />
       <Container maxW={'container.xl'} px={4} py={5} justify="flex-start">
         <BreadCrumbs paths={breadcrumbs} />
         <Heading as="h1" fontSize="6xl" py={10}>

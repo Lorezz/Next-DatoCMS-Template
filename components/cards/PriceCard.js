@@ -1,8 +1,6 @@
 import {
   Box,
-  Stack,
   HStack,
-  Heading,
   Text,
   VStack,
   useColorModeValue,
@@ -13,7 +11,7 @@ import {
 } from '@chakra-ui/react';
 import { FaCheckCircle } from 'react-icons/fa';
 
-function Price({
+function PriceCard({
   id,
   period,
   title,
@@ -98,28 +96,4 @@ function Price({
   );
 }
 
-function Pricing({ title, text, prices }) {
-  return (
-    <Box py={12}>
-      <VStack spacing={2} textAlign="center">
-        <Heading as="h1" fontSize="4xl">
-          {title}
-        </Heading>
-        <Text fontSize="lg" color={'gray.500'}>
-          {text}
-        </Text>
-      </VStack>
-      <Stack
-        direction={{ base: 'column', md: 'row' }}
-        textAlign="center"
-        justify="center"
-        spacing={{ base: 4, lg: 10 }}
-        py={10}>
-        {prices.map((p) => (
-          <Price key={p.id} {...p} />
-        ))}
-      </Stack>
-    </Box>
-  );
-}
-export default Pricing;
+export default PriceCard;

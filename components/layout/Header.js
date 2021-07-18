@@ -28,7 +28,7 @@ import {
   ChevronRightIcon
 } from '@chakra-ui/icons';
 
-import ColorMode from 'components/ColorMode';
+import ColorMode from 'components/layout/ColorMode';
 import { resolvePage } from 'lib/utils';
 
 const NavAction = ({ action }) => {

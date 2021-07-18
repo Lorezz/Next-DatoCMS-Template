@@ -1,7 +1,7 @@
 import { Box } from '@chakra-ui/react';
 
-import InternalLink from 'components/InternalLink';
-import ExternalLink from 'components/ExternalLink';
+import InternalLink from 'components/links/InternalLink';
+import ExternalLink from 'components/links/ExternalLink';
 
 const LinkBlock = ({ block }) => {
   // console.log('Link BLOCK', block);

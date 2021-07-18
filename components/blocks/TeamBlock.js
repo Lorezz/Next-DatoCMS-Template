@@ -6,7 +6,7 @@ import {
   Heading
 } from '@chakra-ui/react';
 
-import ProfileCard from 'components/ProfileCard';
+import ProfileCard from 'components/cards/ProfileCard';
 
 function TeamBlock({ title, people }) {
   return (

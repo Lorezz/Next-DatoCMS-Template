@@ -8,12 +8,12 @@ import {
   Avatar
 } from '@chakra-ui/react';
 
-import Layout from 'components/Layout';
-import BreadCrumbs from 'components/BreadCrumbs';
-import HeroImage from 'components/HeroImage';
+import Layout from 'components/layout/Layout';
+import BreadCrumbs from 'components/layout/BreadCrumbs';
+import Hero from 'components/heros/Hero';
 import StructuredContent from 'components/StructuredContent';
 import ModularContent from 'components/ModularContent';
-import ProfileCard from 'components/ProfileCard';
+import ProfileCard from 'components/cards/ProfileCard';
 import SearchAlgolia from 'components/SearchAlgolia';
 
 import { doQuery } from 'lib/api';
@@ -27,8 +27,7 @@ const AuthorsIndexPage = ({ authors, page, layout }) => {
   ];
   return (
     <Layout data={layout}>
-      {page?.slideshow?.slides && <Slideshow slides={page.slideshow.slides} />}
-      {page?.pic && <HeroImage pic={page.pic} small={true} />}
+      <Hero pic={page?.pic} picSize={'small'} slideshow={page?.slideshow} />
       <Container maxW={'container.xl'} px={4} py={5} justify="flex-start">
         <BreadCrumbs paths={breadcrumbs} />
 

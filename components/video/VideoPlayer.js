@@ -1,5 +1,5 @@
-import VideoInternal from 'components/VideoInternal';
-import VideoHls from 'components/VideoHls';
+import VideoInternal from 'components/video/VideoInternal';
+import VideoHls from 'components/video/VideoHls';
 
 export default function VideoPlayer(props) {
   if (props.videoFile.video) {
