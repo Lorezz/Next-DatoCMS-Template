@@ -11,7 +11,7 @@ const CodeHilight = ({ code, language }) => {
 
   return (
     <pre className="line-numbers">
-      <code className="language-javascript">{code}</code>
+      <code className={language}>{code}</code>
     </pre>
   );
 };

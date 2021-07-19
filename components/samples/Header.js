@@ -24,7 +24,7 @@ import {
   ChevronRightIcon
 } from '@chakra-ui/icons';
 
-import ColorMode from 'components/ColorMode';
+import ColorMode from 'components/layout/ColorMode';
 
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure();

@@ -7,8 +7,8 @@ import {
   Heading
 } from '@chakra-ui/react';
 
-import ProductCard from 'components/template/ProductCard';
-import ProductCard2 from 'components/template/ProductCard2';
+import ProductCard from 'components/samples/ProductCard';
+import ProductCard2 from 'components/samples/ProductCard2';
 
 export default function SimpleThreeColumns() {
   return (

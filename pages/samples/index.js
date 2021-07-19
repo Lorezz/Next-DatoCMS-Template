@@ -1,23 +1,23 @@
 import { Container, Box } from '@chakra-ui/react';
 
-import Hero from 'components/template/HeroCta';
-import Stats from 'components/template/Stats';
-import FeatureBlock from 'components/template/FeatureBlock';
-import FeaturedPost from 'components/template/FeaturedPost';
-import FeatureContent from 'components/template/FeatureContent';
-import Testimonials from 'components/template/Testimonials';
-import TestimonialQuotes from 'components/template/FeatureList';
-import Pricing from 'components/template/Pricing';
-import Newsletter from 'components/template/Newsletter';
+import Hero from 'components/samples/HeroCta';
+import Stats from 'components/samples/Stats';
+import FeatureBlock from 'components/samples/FeatureBlock';
+import FeaturedPost from 'components/samples/FeaturedPost';
+import FeatureContent from 'components/samples/FeatureContent';
+import Testimonials from 'components/samples/Testimonials';
+import TestimonialQuotes from 'components/samples/FeatureList';
+import Pricing from 'components/samples/Pricing';
+import Newsletter from 'components/samples/Newsletter';
 
-import PostGrid from 'components/template/PostGrid';
-import ProductGrid from 'components/template/ProductGrid';
-import TeamBlock from 'components/template/ProfileGrid';
+import PostGrid from 'components/samples/PostGrid';
+import ProductGrid from 'components/samples/ProductGrid';
+import TeamBlock from 'components/samples/ProfileGrid';
 
-import Carousel from 'components/template/Carousel';
-import Gallery from 'components/template/Gallery';
+import Carousel from 'components/samples/Carousel';
+import Gallery from 'components/samples/Gallery';
 
-import Layout from 'components/template/Layout';
+import Layout from 'components/samples/Layout';
 
 const page = () => {
   return (

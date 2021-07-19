@@ -10,7 +10,7 @@ import {
 
 import Layout from 'components/layout/Layout';
 import BreadCrumbs from 'components/layout/BreadCrumbs';
-import LinkBlock from 'components/blocks/LinkBlock';
+import LinkBlock from 'components/links/LinkBlock';
 import TagBadge from 'components/blocks/TagBadge';
 import BlockQuote from 'components/blocks/BlockQuote';
 
@@ -66,7 +66,7 @@ function Author({ author, layout }) {
           <Heading fontSize={'xl'} as="h3" my={5}>
             Bio
           </Heading>
-          <Text dangerouslySetInnerHTML={{ __html: bio }} />
+          <Box fontSize={'xs'} dangerouslySetInnerHTML={{ __html: bio }} />
         </Box>
 
         <Box py={10}>

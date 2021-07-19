@@ -10,7 +10,6 @@ import {
   Button,
   Stack,
   Collapse,
-  Container,
   Image,
   Icon,
   Link,
@@ -18,7 +17,6 @@ import {
   PopoverTrigger,
   PopoverContent,
   useColorModeValue,
-  useBreakpointValue,
   useDisclosure
 } from '@chakra-ui/react';
 import {

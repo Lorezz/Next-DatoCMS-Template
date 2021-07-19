@@ -1,10 +1,10 @@
 import { Box, Divider, Heading } from '@chakra-ui/react';
 
-import FeaturedPost from 'components/template/FeaturedPost';
-import FeatureContent from 'components/template/FeatureContent';
-import PostGrid from 'components/template/PostGrid';
-import ProductGrid from 'components/template/ProductGrid';
-import Newsletter from 'components/template/Newsletter';
+import FeaturedPost from 'components/samples/FeaturedPost';
+import FeatureContent from 'components/samples/FeatureContent';
+import PostGrid from 'components/samples/PostGrid';
+import ProductGrid from 'components/samples/ProductGrid';
+import Newsletter from 'components/samples/Newsletter';
 
 // const widgetTypes = [
 //   'blog-latest',

@@ -3,11 +3,14 @@ import Slideshow from 'components/heros/Slideshow';
 import Carousel from 'components/heros/Carousel';
 
 const Hero = ({ pic, slideshow, picSize = 'small' }) => {
+  if (!pic && !slideshow) return null;
+
   const renderCarousel = () => {
     const slides = slideshow?.slides || null;
-    const type = slideshow?.layout;
+    const layout = slideshow?.layout || 'swiper';
     const images = slides.map((slide) => slide.image.url);
-    if (type === 'motion') {
+    console.log(layout);
+    if (layout === 'motion') {
       return <Carousel images={images} key={slideshow.id} />;
     }
     return <Slideshow slides={slides} key={slideshow.id} />;
@@ -15,11 +18,8 @@ const Hero = ({ pic, slideshow, picSize = 'small' }) => {
 
   return (
     <>
-      {pic ? (
-        <HeroImage pic={pic} small={picSize === 'small'} />
-      ) : slideshow?.slides ? (
-        renderCarousel(slideshow)
-      ) : null}
+      {slideshow?.slides && renderCarousel(slideshow)}
+      {pic && <HeroImage pic={pic} small={picSize === 'small'} />}
     </>
   );
 };

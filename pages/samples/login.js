@@ -15,7 +15,7 @@ import {
   Icon
 } from '@chakra-ui/react';
 
-import SocialLogin from 'components/template/SocialLogin';
+import SocialLogin from 'components/samples/SocialLogin';
 
 const avatars = [
   {

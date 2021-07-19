@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react';
 import NextLink from 'next/link';
 
-import { Logo } from 'components/template/Logo';
+import { Logo } from 'components/samples/Logo';
 
 export const NotFound = () => {
   return (

@@ -11,11 +11,19 @@ import {
   Image,
   useColorModeValue
 } from '@chakra-ui/react';
-import { StructuredText } from 'react-datocms';
+import { StructuredText, Image as DatoImage } from 'react-datocms';
 import moment from 'moment';
 
 function PostCard({ post }) {
-  const { slug, pic, title, excerpt, author, tags, pub = Date.now() } = post;
+  const {
+    slug,
+    preview,
+    title,
+    excerpt,
+    author,
+    tags,
+    pub = Date.now()
+  } = post;
 
   const colors = {
     light: 'purple.400',
@@ -47,7 +55,8 @@ function PostCard({ post }) {
             mb={6}
             pos={'relative'}
             overflow={'hidden'}>
-            {pic && <Image src={pic?.url} />}
+            {/* {pic && <Image src={pic?.url} />} */}
+            {preview && <DatoImage data={preview?.responsiveImage} />}
           </Box>
         </NextLink>
         <Stack>
