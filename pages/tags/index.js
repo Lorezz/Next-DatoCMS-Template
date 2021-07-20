@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Box, Heading, Container, SimpleGrid } from '@chakra-ui/react';
+import { Box, Heading, Container, Wrap, WrapItem } from '@chakra-ui/react';
 
 import Layout from 'components/layout/Layout';
 import BreadCrumbs from 'components/layout/BreadCrumbs';
@@ -25,24 +25,19 @@ const BlogIndexPage = ({ tags, page, layout }) => {
           {page?.title}
         </Heading>
         {page?.content && <StructuredContent content={page.content} />}
-
-        <SimpleGrid
-          columns={{ sm: 1, md: 2, lg: 3 }}
-          spacing="8"
-          p="10"
-          rounded="lg">
+        <Wrap w="full" py={10} mb={20}>
           {tags?.map((tag) => {
             return (
-              <Box key={tag.id}>
+              <WrapItem key={tag.id}>
                 <Link href={`/tags/${tag.slug}`}>
                   <Box pointer="cursor">
                     <TagBadge {...tag} size="3xl" noDefault={true} />
                   </Box>
                 </Link>
-              </Box>
+              </WrapItem>
             );
           })}
-        </SimpleGrid>
+        </Wrap>
       </Container>
     </Layout>
   );

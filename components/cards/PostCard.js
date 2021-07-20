@@ -11,7 +11,8 @@ import {
   Image,
   useColorModeValue
 } from '@chakra-ui/react';
-import { StructuredText, Image as DatoImage } from 'react-datocms';
+import { Image as DatoImage } from 'react-datocms';
+import { render as toPlainText } from 'datocms-structured-text-to-plain-text';
 import moment from 'moment';
 
 function PostCard({ post }) {
@@ -22,7 +23,7 @@ function PostCard({ post }) {
     excerpt,
     author,
     tags,
-    pub = Date.now()
+    _firstPublishedAt: pub = Date.now()
   } = post;
 
   const colors = {
@@ -92,7 +93,7 @@ function PostCard({ post }) {
           </NextLink>
           <NextLink href={`/blog/${slug}`}>
             <Text color={'gray.500'} noOfLines={5} cursor="pointer">
-              <StructuredText data={excerpt} />
+              {toPlainText(excerpt)}
             </Text>
           </NextLink>
         </Stack>

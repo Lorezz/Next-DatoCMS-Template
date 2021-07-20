@@ -3,6 +3,7 @@ import { Box, Text, useColorModeValue } from '@chakra-ui/react';
 const LinkBlock = ({ node, children }) => {
   return (
     <Box
+      my={10}
       borderLeftWidth={4}
       borderLeftColor={useColorModeValue('black', 'white')}>
       <Box px={5}>
@@ -11,7 +12,7 @@ const LinkBlock = ({ node, children }) => {
         </Text>
       </Box>
       {node.attribution && (
-        <Box px={5}>
+        <Box px={5} py={3}>
           <Text fontWeight="bold">{`- ${node.attribution}`}</Text>
         </Box>
       )}

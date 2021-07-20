@@ -1,5 +1,5 @@
 import NextLink from 'next/link';
-import { Badge, useColorModeValue } from '@chakra-ui/react';
+import { Tag, Link, useColorModeValue } from '@chakra-ui/react';
 
 const TagBadge = ({
   slug,
@@ -30,19 +30,24 @@ const TagBadge = ({
   }
 
   return (
-    <NextLink href={`/tags/${slug}`}>
-      <Badge
-        m={4}
-        fontSize={size}
-        cursor="pointer"
-        px={2}
-        py={1}
-        bg={noDefault ? bgColor.hex : useColorModeValue('gray.50', 'gray.800')}
-        color={noDefault ? color.hex : useColorModeValue('black', 'white')}
-        _hover={hover}
-        fontWeight={'400'}>
-        {`#${name}`}
-      </Badge>
+    <NextLink href={`/tags/${slug}`} passHref={true}>
+      <Link textDecoration="none" _hover={{ textDecoration: 'none' }}>
+        <Tag
+          m={4}
+          size={size}
+          fontSize={size}
+          rounded={'md'}
+          fontWeight="bold"
+          cursor="pointer"
+          p={3}
+          bg={
+            noDefault ? bgColor.hex : useColorModeValue('gray.50', 'gray.800')
+          }
+          color={noDefault ? color.hex : useColorModeValue('black', 'white')}
+          _hover={hover}>
+          {`# ${name.toUpperCase()}`}
+        </Tag>
+      </Link>
     </NextLink>
   );
 };

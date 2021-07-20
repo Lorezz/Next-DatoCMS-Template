@@ -8,12 +8,8 @@ import {
   Divider,
   HStack,
   Tag,
-  Wrap,
-  WrapItem,
-  SpaceProps,
   useColorModeValue,
-  Container,
-  VStack
+  Container
 } from '@chakra-ui/react';
 
 const BlogTags = (props) => {

@@ -115,9 +115,17 @@ const ModularContent = ({ content }) => {
           </Box>
         );
       case 'EmbeddedVideoRecord':
-        return <VideoEmbedded {...record} />;
+        return (
+          <Box key={record.id} py={10}>
+            <VideoEmbedded {...record} />
+          </Box>
+        );
       case 'InternalVideoRecord':
-        return <VideoPlayer {...record} />;
+        return (
+          <Box key={record.id} py={10}>
+            <VideoPlayer {...record} />
+          </Box>
+        );
       case 'QuoteRecord':
         return (
           <BlockQuote

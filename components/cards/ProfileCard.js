@@ -8,6 +8,7 @@ import {
   Button,
   Badge,
   Center,
+  Link,
   useColorModeValue
 } from '@chakra-ui/react';
 
@@ -77,43 +78,47 @@ function ProfileCard({
           {tags.map((tag) => {
             const { slug, id, name, bgColor, color } = tag;
             return (
-              <NextLink href={`/tags/${slug}`} key={id}>
-                <Badge
-                  cursor="pointer"
-                  px={2}
-                  py={1}
-                  bg={useColorModeValue('gray.50', 'gray.800')}
-                  _hover={{
-                    bg: bgColor?.hex ?? colorHover,
-                    color: color?.hex ?? color
-                  }}
-                  fontWeight={'400'}>
-                  {`#${name}`}
-                </Badge>
+              <NextLink href={`/tags/${slug}`} key={id} passHref={true}>
+                <Link textDecoration="none" _hover={{ textDecoration: 'none' }}>
+                  <Badge
+                    cursor="pointer"
+                    px={2}
+                    py={1}
+                    bg={useColorModeValue('gray.50', 'gray.800')}
+                    _hover={{
+                      bg: bgColor?.hex ?? colorHover,
+                      color: color?.hex ?? color
+                    }}
+                    fontWeight={'400'}>
+                    {`#${name}`}
+                  </Badge>
+                </Link>
               </NextLink>
             );
           })}
         </Stack>
 
-        <Stack mt={8} direction={'row'} spacing={4}>
-          <NextLink href={`/authors/${slug}`}>
-            <Button
-              flex={1}
-              fontSize={'sm'}
-              rounded={'full'}
-              bg={color}
-              color={'white'}
-              boxShadow="lg"
-              _hover={{
-                bg: colorHover
-              }}
-              _focus={{
-                bg: colorHover
-              }}>
-              View Profile
-            </Button>
-          </NextLink>
-        </Stack>
+        <NextLink href={`/authors/${slug}`} passHref={true}>
+          <Link textDecoration="none" _hover={{ textDecoration: 'none' }}>
+            <Stack mt={8} direction={'row'} spacing={4}>
+              <Button
+                flex={1}
+                fontSize={'sm'}
+                rounded={'full'}
+                bg={color}
+                color={'white'}
+                boxShadow="lg"
+                _hover={{
+                  bg: colorHover
+                }}
+                _focus={{
+                  bg: colorHover
+                }}>
+                View Profile
+              </Button>
+            </Stack>
+          </Link>
+        </NextLink>
       </Box>
     </Center>
   );
