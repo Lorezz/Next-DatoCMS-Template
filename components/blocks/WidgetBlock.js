@@ -1,8 +1,9 @@
+
 import { Box, Divider, Heading } from '@chakra-ui/react';
 
 import FeaturedPost from 'components/samples/FeaturedPost';
 import FeatureContent from 'components/samples/FeatureContent';
-import PostGrid from 'components/samples/PostGrid';
+import PostGrid from 'components/PostGrid';
 import ProductGrid from 'components/samples/ProductGrid';
 import Newsletter from 'components/samples/Newsletter';
 

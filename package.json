@@ -47,6 +47,7 @@
     "react-leaflet": "^3.2.0",
     "react-player": "^2.9.0",
     "swiper": "^6.7.5",
+    "swr": "^0.5.6",
     "xstate": "^4.17.0",
     "yup": "^0.32.9"
   },
