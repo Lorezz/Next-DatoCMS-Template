@@ -1,4 +1,4 @@
-import { Icon, IconProps, useColorModeValue, useTheme } from '@chakra-ui/react';
+import { Icon, useColorModeValue, useTheme } from '@chakra-ui/react';
 
 export const Logo = (props) => {
   const theme = useTheme();

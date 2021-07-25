@@ -1,5 +1,4 @@
 import {
-  Box,
   SimpleGrid,
   Divider,
   Container,

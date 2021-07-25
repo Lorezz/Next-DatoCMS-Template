@@ -1,7 +1,7 @@
 import { FcGoogle } from 'react-icons/fc';
 import { FaFacebook } from 'react-icons/fa';
-import { SiLinkedin, SiMessenger } from 'react-icons/si';
-import { Box, Button, Center, Stack, Text } from '@chakra-ui/react';
+// import { SiLinkedin, SiMessenger } from 'react-icons/si';
+import { Button, Center, Stack, Text } from '@chakra-ui/react';
 
 export default function All() {
   return (

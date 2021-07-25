@@ -15,7 +15,6 @@ import {
   IoLogoBitcoin,
   IoSearchSharp
 } from 'react-icons/io5';
-import { ReactElement } from 'react';
 
 const Feature = ({ text, icon, iconBg }) => {
   return (

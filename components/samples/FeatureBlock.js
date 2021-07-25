@@ -1,12 +1,4 @@
-import {
-  Box,
-  SimpleGrid,
-  Icon,
-  Text,
-  Stack,
-  Flex,
-  Container
-} from '@chakra-ui/react';
+import { Box, SimpleGrid, Icon, Text, Stack, Flex } from '@chakra-ui/react';
 import { FcAssistant, FcDonate, FcInTransit } from 'react-icons/fc';
 
 const Feature = ({ title, text, icon }) => {

@@ -5,7 +5,6 @@ import {
   Link,
   Image,
   Text,
-  Divider,
   HStack,
   Tag,
   useColorModeValue,

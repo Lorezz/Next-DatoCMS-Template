@@ -1,27 +1,14 @@
 import React from 'react';
 import {
-  Box,
   Heading,
-  Link,
   Image,
   Text,
-  Divider,
   HStack,
   Tag,
-  Wrap,
-  WrapItem,
-  SpaceProps,
-  useColorModeValue,
-  Container,
   VStack,
   Flex,
-  Stack,
-  Button,
-  Icon,
-  IconProps
+  Stack
 } from '@chakra-ui/react';
-
-import Layout from 'components/template/Layout';
 
 const BlogTags = (props) => {
   return (
