@@ -6,7 +6,7 @@ const _ = require('lodash');
 const axios = require('axios');
 const algoliasearch = require('algoliasearch');
 const client = algoliasearch(
-  process.env.ALGOLIA_APPID,
+  process.env.NEXT_PUBLIC_ALGOLIA_APP_ID,
   process.env.ALGOLIA_SECRET
 );
 const KEY = process.env.NEXT_PUBLIC_DATO_KEY;
