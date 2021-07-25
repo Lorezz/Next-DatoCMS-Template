@@ -1,3 +1,7 @@
+[build]
+  base = ."
+  command = ". build.sh"
+  publish = "out"
 [template]
   incoming-hooks = ["DatoCMS"]
 [template.environment]

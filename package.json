@@ -14,7 +14,7 @@
     "build": "next build",
     "start": "next start",
     "postbuild": "next-sitemap",
-    "prebuild": "node scripts/algoliaindex.js"
+    "vercel-prebuild": "node ./scripts/algoliaindex.js"
   },
   "dependencies": {
     "@chakra-ui/icons": "^1.0.12",
@@ -54,7 +54,6 @@
     "yup": "^0.32.9"
   },
   "devDependencies": {
-    "@netlify/plugin-nextjs": "^3.0.3",
     "dotenv": "^10.0.0",
     "next-sitemap": "^1.6.133"
   }
