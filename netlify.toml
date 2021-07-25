@@ -1,6 +1,6 @@
 [build]
   base = ."
-  command = ". build.sh"
+  command = "yarn algolia && yarn build"
   publish = "out"
 [template]
   incoming-hooks = ["DatoCMS"]
