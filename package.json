@@ -12,10 +12,11 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "export": "next export",
+    "deploy": "yarn algolia && yarn build && yarn export",
     "start": "next start",
     "algolia": "node scripts/algoliaindex.js",
-    "sitemap": "next-sitemap",
-    "postbuild": "yarn algolia && yarn sitemap"
+    "postbuild": "next-sitemap"
   },
   "dependencies": {
     "@chakra-ui/icons": "^1.0.12",
