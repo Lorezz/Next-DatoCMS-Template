@@ -13,7 +13,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "algolia": "node ./scripts/algoliaindex.js",
+    "algolia": "node scripts/algoliaindex.js",
     "sitemap": "next-sitemap",
     "postbuild": "yarn algolia && yarn sitemap"
   },
