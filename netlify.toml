@@ -1,7 +1,7 @@
 [build]
-  base = ."
-  command = "yarn algolia && yarn build"
+  command = "yarn build"
   publish = "out"
+
 [template]
   incoming-hooks = ["DatoCMS"]
 [template.environment]
