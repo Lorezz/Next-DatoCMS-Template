@@ -6,6 +6,7 @@ import BreadCrumbs from 'components/layout/BreadCrumbs';
 import Hero from 'components/heros/Hero';
 import StructuredContent from 'components/StructuredContent';
 import TagBadge from 'components/blocks/TagBadge';
+import SearchAlgolia from 'components/SearchAlgolia';
 
 import { doQuery } from 'lib/api';
 import * as queries from 'lib/queries';
@@ -24,6 +25,9 @@ const BlogIndexPage = ({ tags, page, layout }) => {
         <Heading as="h1" fontSize="6xl" py={10}>
           {page?.title}
         </Heading>
+
+        <SearchAlgolia indexName={'dev_samples_tags'} type="tags" />
+
         {page?.content && <StructuredContent content={page.content} />}
         <Wrap w="full" py={10} mb={20}>
           {tags?.map((tag) => {

@@ -35,7 +35,7 @@ const AuthorsIndexPage = ({ authors, page, layout }) => {
           {page?.title}
         </Heading>
 
-        <SearchAlgolia indexName={'dev_samples_authors'} />
+        <SearchAlgolia indexName={'dev_samples_authors'} type="authors" />
 
         {page?.content && <StructuredContent content={page.content} />}
         {page?.modBlocks && <ModularContent content={page.modBlocks} />}

@@ -8,11 +8,14 @@
     "type": "git",
     "url": "https://github.com/Lorezz/Next-DatoCMS-Template.git"
   },
+  "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "postbuild": "next-sitemap"
+    "algolia": "node ./scripts/algoliaindex.js",
+    "sitemap": "next-sitemap",
+    "postbuild": "yarn algolia && yarn sitemap"
   },
   "dependencies": {
     "@chakra-ui/icons": "^1.0.12",

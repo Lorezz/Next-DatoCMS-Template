@@ -6,6 +6,7 @@ import BreadCrumbs from 'components/layout/BreadCrumbs';
 import Hero from 'components/heros/Hero';
 import StructuredContent from 'components/StructuredContent';
 import PostCard from 'components/cards/PostCard';
+import SearchAlgolia from 'components/SearchAlgolia';
 
 import { doQuery } from 'lib/api';
 import * as queries from 'lib/queries';
@@ -24,6 +25,9 @@ const BlogIndexPage = ({ posts, page, layout }) => {
         <Heading as="h1" fontSize="6xl" py={10}>
           {page?.title}
         </Heading>
+
+        <SearchAlgolia indexName={'dev_samples_posts'} type="blog" />
+
         {page?.excerpt && <StructuredContent content={page.excerpt} />}
         {page?.content && <StructuredContent content={page.content} />}
 

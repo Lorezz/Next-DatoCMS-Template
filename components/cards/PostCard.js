@@ -8,7 +8,7 @@ import {
   Stack,
   Avatar,
   Badge,
-  Image,
+  Link,
   useColorModeValue
 } from '@chakra-ui/react';
 import { Image as DatoImage } from 'react-datocms';
@@ -47,67 +47,78 @@ function PostCard({ post }) {
         p={6}
         overflow={'hidden'}>
         <NextLink href={`/blog/${slug}`}>
-          <Box
-            cursor="pointer"
-            h={210}
-            bg={'gray.100'}
-            mt={-6}
-            mx={-6}
-            mb={6}
-            pos={'relative'}
-            overflow={'hidden'}>
-            {/* {pic && <Image src={pic?.url} />} */}
-            {preview && <DatoImage data={preview?.responsiveImage} />}
-          </Box>
+          <Link textDecoration="none" _hover={{ textDecoration: 'none' }}>
+            <Box
+              cursor="pointer"
+              h={210}
+              bg={'gray.100'}
+              mt={-6}
+              mx={-6}
+              mb={6}
+              pos={'relative'}
+              overflow={'hidden'}>
+              {/* {pic && <Image src={pic?.url} />} */}
+              {preview && <DatoImage data={preview?.responsiveImage} />}
+            </Box>
+          </Link>
         </NextLink>
         <Stack>
           <Stack direction={'row'}>
             {tags.map((tag) => {
               return (
-                <NextLink href={`/tags/${tag.slug}`} key={tag.id}>
-                  <Badge
-                    cursor="pointer"
-                    px={2}
-                    py={1}
-                    bg={useColorModeValue('gray.50', 'gray.800')}
-                    _hover={{
-                      bg: tag.bgColor?.hex ?? colorHover,
-                      color: tag.color?.hex ?? color
-                    }}
-                    textTransform={'uppercase'}
-                    fontWeight={'400'}>
-                    {`#${tag.name}`}
-                  </Badge>
+                <NextLink
+                  href={`/tags/${tag.slug}`}
+                  key={tag.id}
+                  passHref={true}>
+                  <Link
+                    textDecoration="none"
+                    _hover={{ textDecoration: 'none' }}>
+                    <Badge
+                      cursor="pointer"
+                      px={2}
+                      py={1}
+                      bg={useColorModeValue('gray.50', 'gray.800')}
+                      _hover={{
+                        bg: tag.bgColor?.hex ?? colorHover,
+                        color: tag.color?.hex ?? color
+                      }}
+                      textTransform={'uppercase'}
+                      fontWeight={'400'}>
+                      {`#${tag.name}`}
+                    </Badge>
+                  </Link>
                 </NextLink>
               );
             })}
           </Stack>
-          <NextLink href={`/blog/${slug}`}>
-            <Heading
-              cursor="pointer"
-              color={useColorModeValue('gray.700', 'white')}
-              fontSize={'2xl'}
-              fontFamily={'body'}>
-              {title}
-            </Heading>
-          </NextLink>
-          <NextLink href={`/blog/${slug}`}>
-            <Text color={'gray.500'} noOfLines={5} cursor="pointer">
-              {toPlainText(excerpt)}
-            </Text>
+          <NextLink href={`/blog/${slug}`} passHref={true}>
+            <Link textDecoration="none" _hover={{ textDecoration: 'none' }}>
+              <Heading
+                cursor="pointer"
+                color={useColorModeValue('gray.700', 'white')}
+                fontSize={'2xl'}
+                fontFamily={'body'}
+                mb={2}>
+                {title}
+              </Heading>
+              <Text color={'gray.500'} noOfLines={5} cursor="pointer">
+                {toPlainText(excerpt)}
+              </Text>
+            </Link>
           </NextLink>
         </Stack>
-        <Stack mt={6} direction={'row'} spacing={4} align={'center'}>
-          <NextLink href={`/authors/${author?.slug}`}>
-            <Avatar src={author?.pic?.url} alt={author?.name} />
-          </NextLink>
-          <Stack direction={'column'} spacing={0} fontSize={'sm'}>
-            <NextLink href={`/authors/${author?.slug}`}>
-              <Text fontWeight={600}>{author?.name}</Text>
-            </NextLink>
-            <Text color={'gray.500'}>{date}</Text>
-          </Stack>
-        </Stack>
+        <NextLink href={`/authors/${author?.slug}`}>
+          <Link textDecoration="none" _hover={{ textDecoration: 'none' }}>
+            <Stack mt={6} direction={'row'} spacing={4} align={'center'}>
+              <Avatar src={author?.pic?.url} alt={author?.name} />
+
+              <Stack direction={'column'} spacing={0} fontSize={'sm'}>
+                <Text fontWeight={600}>{author?.name}</Text>
+                <Text color={'gray.500'}>{date}</Text>
+              </Stack>
+            </Stack>
+          </Link>
+        </NextLink>
       </Box>
     </Center>
   );
