@@ -13,7 +13,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "sitemap": "next-sitemap",
+    "postbuild": "next-sitemap",
     "vercel-prebuild": "node ./scripts/algoliaindex.js"
   },
   "dependencies": {
