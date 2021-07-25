@@ -14,8 +14,7 @@
     "build": "next build",
     "start": "next start",
     "postbuild": "next-sitemap",
-    "algolia": "node scripts/algoliaindex.js",
-    "deploy": "yarn algolia && yarn build"
+    "prebuild": "yarn scripts/algoliaindex.js"
   },
   "dependencies": {
     "@chakra-ui/icons": "^1.0.12",
