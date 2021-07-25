@@ -2,6 +2,9 @@
   command = "yarn build"
   publish = "out"
 
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
 [template]
   incoming-hooks = ["DatoCMS"]
 [template.environment]

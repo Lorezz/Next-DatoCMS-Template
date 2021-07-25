@@ -13,7 +13,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "postbuild": "next-sitemap",
+    "sitemap": "next-sitemap",
     "vercel-prebuild": "node ./scripts/algoliaindex.js"
   },
   "dependencies": {
@@ -54,7 +54,8 @@
     "yup": "^0.32.9"
   },
   "devDependencies": {
+    "@netlify/plugin-nextjs": "^3.7.1",
     "dotenv": "^10.0.0",
-    "next-sitemap": "^1.6.133"
+    "next-sitemap": "^1.6.140"
   }
 }
