@@ -1,3 +1,3 @@
 module.exports = {
-  distDir="out"
-}
+  distDir: 'out'
+};
