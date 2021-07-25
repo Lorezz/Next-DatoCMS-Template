@@ -9,7 +9,6 @@ const Hero = ({ pic, slideshow, picSize = 'small' }) => {
     const slides = slideshow?.slides || null;
     const layout = slideshow?.layout || 'swiper';
     const images = slides.map((slide) => slide.image.url);
-    console.log(layout);
     if (layout === 'motion') {
       return <Carousel images={images} key={slideshow.id} />;
     }

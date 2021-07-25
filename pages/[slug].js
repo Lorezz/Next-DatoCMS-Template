@@ -43,10 +43,10 @@ export async function getStaticProps({ params }) {
   const response = await doQuery(queries.page, { slug });
   const page = response?.data?.page || null;
 
-  if (!page) {
-    console.log('PAGE QUERY', queries.home);
-    console.log('PAGE SLUG', slug);
-  }
+  // if (!page) {
+  //   console.log('PAGE QUERY', queries.home);
+  //   console.log('PAGE SLUG', slug);
+  // }
 
   const siteResponse = await doQuery(queries.siteQuery, null);
   const layout = getLayoutData(siteResponse, page?.seo);

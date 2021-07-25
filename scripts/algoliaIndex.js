@@ -10,9 +10,6 @@ const client = algoliasearch(
   process.env.ALGOLIA_SECRET
 );
 const KEY = process.env.NEXT_PUBLIC_DATO_KEY;
-console.log('====================================');
-console.log('KEY', KEY);
-console.log('====================================');
 /**
  * Function to retrieve data from DatoCMS
  * @param {String} q  - Graphql query
