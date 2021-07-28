@@ -35,19 +35,20 @@ const NavAction = ({ action }) => {
     : action.internalLink?.slug;
 
   return (
-    <NextLink href={url}>
-      <Button
-        as={'a'}
-        display={{ base: 'none', md: 'inline-flex' }}
-        fontSize={'sm'}
-        fontWeight={600}
-        color={'white'}
-        bg={'pink.400'}
-        _hover={{
-          bg: 'pink.300'
-        }}>
-        {action.title}
-      </Button>
+    <NextLink href={url} passHref={true}>
+      <Link textDecoration="none" _hover={{ textDecoration: 'none' }}>
+        <Button
+          display={{ base: 'none', md: 'inline-flex' }}
+          fontSize={'sm'}
+          fontWeight={600}
+          color={'white'}
+          bg={'gray.700'}
+          _hover={{
+            bg: 'gray.800'
+          }}>
+          {action.title}
+        </Button>
+      </Link>
     </NextLink>
   );
 };
@@ -260,7 +261,7 @@ const Header = ({ data }) => {
                 color={useColorModeValue('gray.800', 'white')}>
                 Logo
               </Text> */}
-              <Logo w={10} h={10} borderRadius="xl" />
+              <Logo height={'50px'} borderRadius="xl" />
             </a>
           </NextLink>
 

@@ -4,7 +4,8 @@ import {
   Text,
   OrderedList,
   UnorderedList,
-  ListItem
+  ListItem,
+  Link
 } from '@chakra-ui/react';
 import { StructuredText, renderRule } from 'react-datocms';
 import {
@@ -13,7 +14,8 @@ import {
   isParagraph,
   isBlockquote,
   isCode,
-  isHeading
+  isHeading,
+  isLink
 } from 'datocms-structured-text-utils';
 
 import BlockQuote from 'components/blocks/BlockQuote';
@@ -118,6 +120,14 @@ const StructuredContent = ({ content }) => {
         }}
         renderBlock={({ record }) => renderBlock(record)}
         customRules={[
+          // renderRule(isLink, ({ key,children, ...props }) => {
+          //   console.log('props', props);
+          //   return (
+          //     <Link as="a" key={key} target="_blank" rel="noopener">
+          //       {children}
+          //     </Link>
+          //   );
+          // }),
           renderRule(isParagraph, ({ children, key }) => {
             return (
               <Text py={4} key={key}>
@@ -147,13 +157,15 @@ const StructuredContent = ({ content }) => {
             );
           }),
           renderRule(isList, ({ node, children, key }) => {
-            <Box key={key}>
-              {node?.style === 'numbered' ? (
-                <OrderedList>{children}</OrderedList>
-              ) : (
-                <UnorderedList>{children}</UnorderedList>
-              )}
-            </Box>;
+            return (
+              <Box key={key}>
+                {node?.style === 'numbered' ? (
+                  <OrderedList>{children}</OrderedList>
+                ) : (
+                  <UnorderedList>{children}</UnorderedList>
+                )}
+              </Box>
+            );
           }),
           renderRule(isListItem, ({ node, children, key }) => {
             return <ListItem key={key}>{children}</ListItem>;

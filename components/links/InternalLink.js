@@ -31,10 +31,12 @@ const InternalLink = ({ internalLink, title = null, preview = null }) => {
       <Link
         href={`${path}/${internalLink.slug}`}
         key={internalLink.id}
-        fontSize="xl">
+        fontSize="2xl">
         <a>
           <Box d="flex" px={4} alignItems="center" my={10}>
-            {preview && <Avatar name={title} src={preview.url} mr={4} />}
+            {preview && (
+              <Avatar size="xl" name={title} src={preview.url} mr={4} />
+            )}
             {linkTitle ? linkTitle : internalLink.slug}
           </Box>
         </a>

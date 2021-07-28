@@ -1,4 +1,4 @@
-import { Box, Heading, Text, Container } from '@chakra-ui/react';
+import { Box, Heading, Text, Container, SimpleGrid } from '@chakra-ui/react';
 import { Image } from 'react-datocms';
 
 import Layout from 'components/layout/Layout';
@@ -36,17 +36,21 @@ function Tag({ data, layout }) {
         {matches?.people?.length > 0 && (
           <Box>
             <Heading as="h3">{'People'}</Heading>
-            {matches?.people?.map((a) => {
-              return <ProfileCard key={a.id} {...a} />;
-            })}
+            <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>
+              {matches?.people?.map((a) => {
+                return <ProfileCard key={a.id} {...a} />;
+              })}
+            </SimpleGrid>
           </Box>
         )}
         {matches?.posts?.length > 0 && (
           <Box>
             <Heading as="h3">{'Posts'}</Heading>
-            {matches?.posts?.map((p) => {
-              return <PostCard key={p.id} post={p} />;
-            })}
+            <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>
+              {matches?.posts?.map((p) => {
+                return <PostCard key={p.id} post={p} />;
+              })}
+            </SimpleGrid>
           </Box>
         )}
       </Container>

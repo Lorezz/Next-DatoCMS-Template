@@ -3,7 +3,7 @@ import { Box, Text, useColorModeValue } from '@chakra-ui/react';
 const LinkBlock = ({ node, children }) => {
   return (
     <Box
-      my={10}
+      my={5}
       borderLeftWidth={4}
       borderLeftColor={useColorModeValue('black', 'white')}>
       <Box px={5}>

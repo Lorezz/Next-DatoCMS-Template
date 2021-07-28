@@ -16,7 +16,7 @@ const CodeHilight = ({ code, language }) => {
   }
   console.log(language, cname);
   return (
-    <Box py={10}>
+    <Box py={5}>
       <pre className="line-numbers">
         <code className={cname}>{code}</code>
       </pre>

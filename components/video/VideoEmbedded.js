@@ -19,7 +19,6 @@ const VideoEmbedded = ({ id, video, autoplay, loop }) => {
     <Flex
       w="100%"
       ref={ref}
-      minHeight={300}
       justifyContent="center"
       alignItems="center"
       key={id}>
@@ -28,6 +27,7 @@ const VideoEmbedded = ({ id, video, autoplay, loop }) => {
           controls={true}
           muted={true}
           width={width}
+          height={500}
           autoPlay={autoplay}
           loop={loop}
           url={video.url}

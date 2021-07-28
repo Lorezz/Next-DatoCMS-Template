@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import NextLink from 'next/link';
 import {
   Box,
   Heading,
@@ -7,6 +8,7 @@ import {
   Button,
   Stack,
   Icon,
+  Link,
   useColorModeValue,
   createIcon
 } from '@chakra-ui/react';
@@ -58,16 +60,20 @@ function VCta({ cta }) {
             align={'center'}
             alignSelf={'center'}
             position={'relative'}>
-            <Button
+            <Link
+              href={cta.externalLink}
+              target="_blank"
+              rel="noopener"
               colorScheme={colorScheme}
-              bg={color}
+              bg={colorHover}
               rounded={'full'}
               px={6}
+              py={3}
               _hover={{
-                bg: colorHover
+                bg: color
               }}>
-              {action}
-            </Button>
+              <Text color={'white'}>{action}</Text>
+            </Link>
             <Box>
               <Icon
                 as={Arrow}
