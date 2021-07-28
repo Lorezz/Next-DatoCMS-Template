@@ -1,7 +1,7 @@
 import { Box } from '@chakra-ui/react';
 import { useEffect } from 'react';
 import Prism from 'prismjs';
-import 'prismjs/themes/prism-okaidia.css';
+// import 'prismjs/themes/prism-okaidia.css';
 
 const CodeHilight = ({ code, language }) => {
   useEffect(() => {

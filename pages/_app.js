@@ -4,6 +4,8 @@ import Router from 'next/router';
 import theme from 'theme';
 import NProgress from 'nprogress';
 
+import 'assets/prism-atom-dark.css';
+
 Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());
 Router.events.on('routeChangeError', () => NProgress.done());
