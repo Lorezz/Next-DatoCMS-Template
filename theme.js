@@ -56,8 +56,10 @@ const t = {
       p: { fontSize: 'xl' }
     })
   },
-  initialColorMode: 'dark',
-  useSystemColorMode: false
+  config: {
+    initialColorMode: 'dark',
+    useSystemColorMode: false
+  }
 };
 
 const theme = extendTheme(t);
