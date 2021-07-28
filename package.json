@@ -14,7 +14,7 @@
     "build": "next build",
     "start": "next start",
     "postbuild": "next-sitemap",
-    "vercel-prebuild": "node ./scripts/algoliaindex.js"
+    "algolia": "node ./scripts/algoliaindex.js"
   },
   "dependencies": {
     "@chakra-ui/icons": "^1.0.12",
