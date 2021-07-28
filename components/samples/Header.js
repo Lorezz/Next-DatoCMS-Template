@@ -204,7 +204,7 @@ const MobileNavItem = ({ label, children, href }) => {
       <Flex
         py={2}
         as={Link}
-        href={href ?? '#'}
+        href={href ?? '/'}
         justify={'space-between'}
         align={'center'}
         _hover={{
@@ -253,12 +253,12 @@ const NAV_ITEMS = [
       {
         label: 'Explore Design Work',
         subLabel: 'Trending Design to inspire you',
-        href: '#'
+        href: '/samples/post'
       },
       {
         label: 'New & Noteworthy',
         subLabel: 'Up-and-coming Designers',
-        href: '#'
+        href: '/samples/post'
       }
     ]
   },
@@ -268,21 +268,21 @@ const NAV_ITEMS = [
       {
         label: 'Job Board',
         subLabel: 'Find your dream design job',
-        href: '#'
+        href: '/'
       },
       {
         label: 'Freelance Projects',
         subLabel: 'An exclusive list for contract work',
-        href: '#'
+        href: '/'
       }
     ]
   },
   {
     label: 'Learn Design',
-    href: '#'
+    href: '/'
   },
   {
     label: 'Hire Designers',
-    href: '#'
+    href: '/'
   }
 ];
