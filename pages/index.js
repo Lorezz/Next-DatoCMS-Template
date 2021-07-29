@@ -12,7 +12,7 @@ import { getLayoutData } from 'lib/utils';
 
 const BlogIndexPage = ({ page, layout }) => {
   return (
-    <Layout data={layout}>
+    <Layout data={layout} bg="/images/bg1.png">
       <Hero pic={page?.pic} picSize={'small'} slideshow={page?.slideshow} />
       <Container maxW={'container.xl'} px={4} py={5}>
         {/* <Heading as="h1" fontSize="6xl" py={10}>{page.title}</Heading> */}
