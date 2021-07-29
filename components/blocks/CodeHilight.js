@@ -14,9 +14,9 @@ const CodeHilight = ({ code, language }) => {
   if (cname.indexOf('lang') < 0) {
     cname = `language-${cname}`;
   }
-  console.log(language, cname);
+  // console.log(language, cname);
   return (
-    <Box py={5}>
+    <Box py={2}>
       <pre className="line-numbers">
         <code className={cname}>{code}</code>
       </pre>

@@ -130,7 +130,7 @@ const StructuredContent = ({ content }) => {
           // }),
           renderRule(isParagraph, ({ children, key }) => {
             return (
-              <Text py={4} key={key}>
+              <Text py={1} key={key}>
                 {children}
               </Text>
             );
@@ -151,7 +151,7 @@ const StructuredContent = ({ content }) => {
           }),
           renderRule(isHeading, ({ node, children, key }) => {
             return (
-              <Heading key={key} as={`h${node.level}`} py={5}>
+              <Heading key={key} as={`h${node.level}`} pt={6} pb={4}>
                 {children}
               </Heading>
             );
@@ -160,9 +160,13 @@ const StructuredContent = ({ content }) => {
             return (
               <Box key={key}>
                 {node?.style === 'numbered' ? (
-                  <OrderedList>{children}</OrderedList>
+                  <OrderedList spacing={0} mb={3}>
+                    {children}
+                  </OrderedList>
                 ) : (
-                  <UnorderedList>{children}</UnorderedList>
+                  <UnorderedList spacing={0} mb={3}>
+                    {children}
+                  </UnorderedList>
                 )}
               </Box>
             );
