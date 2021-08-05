@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import {
   Box,
   Center,
@@ -6,6 +5,7 @@ import {
   Text,
   Stack,
   Avatar,
+  Image,
   useColorModeValue
 } from '@chakra-ui/react';
 

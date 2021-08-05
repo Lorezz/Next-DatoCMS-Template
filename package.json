@@ -11,8 +11,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "export": "next export",
     "start": "next start",
-    "postbuild": "next-sitemap",
+    "a-postbuild": "next-sitemap",
     "algolia": "node ./scripts/algoliaindex.js"
   },
   "dependencies": {
