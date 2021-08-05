@@ -9,7 +9,7 @@ const Map = ({ mapHeight, position }) => {
   mapboxgl.accessToken = NEXT_PUBLIC_REACT_APP_API_MAPBOX;
   const mapRef = useRef(null);
 
-  const initialValues = position ? position : { lng: 0.0, lat: 0.0, zoom: 1 };
+  const initialValues = position ? position : { lng: 0.0, lat: 0.0, zoom: 14 };
   const [opts, setOpts] = useState(initialValues);
 
   useEffect(() => {
@@ -42,7 +42,7 @@ const Map = ({ mapHeight, position }) => {
         style={{
           position: 'relative',
           width: '100%',
-          height: mapHeight ? mapHeight : 300,
+          height: mapHeight ? mapHeight : 500,
           border: '1px solid #eee',
           backgroundColor: '#eee',
           borderRadius: '10px'

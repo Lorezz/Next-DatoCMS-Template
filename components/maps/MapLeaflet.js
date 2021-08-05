@@ -11,7 +11,7 @@ const Map = ({ position, name }) => {
   return (
     <MapContainer
       center={position}
-      zoom={13}
+      zoom={14}
       scrollWheelZoom={false}
        style={{ height: '100%', width: '100%' }}>
       <TileLayer url={layerUrl} attribution={attributionText} />
