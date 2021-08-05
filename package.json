@@ -13,7 +13,7 @@
     "build": "next build",
     "export": "next export",
     "start": "next start",
-    "a-postbuild": "next-sitemap",
+    "postbuild": "next-sitemap",
     "algolia": "node ./scripts/algoliaindex.js"
   },
   "dependencies": {

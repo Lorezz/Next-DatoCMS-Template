@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://next-datocms-template.netlify.app
+Host: https://next-datocms-template.netlify.app/
 
 # Sitemaps
 Sitemap: https://next-datocms-template.netlify.app/sitemap.xml
