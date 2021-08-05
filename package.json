@@ -34,7 +34,7 @@
     "mapbox-gl": "^2.2.0",
     "md5": "^2.3.0",
     "moment": "^2.29.1",
-    "next": "10.0.9",
+    "next": "^11.0.1",
     "next-seo": "^4.24.0",
     "nprogress": "^0.2.0",
     "prismjs": "^1.23.0",
@@ -58,8 +58,8 @@
     "next-sitemap": "^1.6.140"
   },
   "browserslist": [
-   ">0.2%",
-  "not dead",
-  "not op_mini all"
-]
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
+  ]
 }
