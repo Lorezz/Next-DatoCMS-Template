@@ -38,7 +38,7 @@ Then deploy to Vercel or Netlify:
 
 This button should start a setup that will guide you during the whole process
 
-[![Deploy DatoCMS starter](https://dashboard.datocms.com/deploy/button.svg)](https://dashboard.datocms.com/deploy?repo=https://github.com/Lorezz/Next-DatoCMS-Template)
+[![Clone DatoCMS project](https://dashboard.datocms.com/clone/button.svg)](https://dashboard.datocms.com/deploy?repo=Lorezz%2FNext-DatoCMS-Template)
 
 # Setup the project in local
 
